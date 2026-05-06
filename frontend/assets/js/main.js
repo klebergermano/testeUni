@@ -11,27 +11,6 @@ document.addEventListener('click', (e) => {
     }
 });
 
-//---------------------------------------------------------------------
-//
-console.log('----------------')
-console.log(window.location)
-console.log('----------------')
-
-const routes = {
-    '/': '/pages/home.html',
-    '/sobre': '/pages/sobre.html',
-    '/contato': '/pages/contato.html'
-};
-
-
-async function router() {
-    const path = window.location.pathname;
-
-    const route = routes[path] || '/pages/404.html';
-
-    loadComponent(route, '#app');
-}
-
 
 //---------------------------------------------------------------------
 
@@ -53,4 +32,28 @@ async function loadComponent(selector, file) {
     }
 }
 
-loadComponent('#bg-header', './pages/components/header.html')
+
+//---------------------------------------------------------------------
+
+
+const routes = {
+    '/': '/pages/home.html',
+    '/sobre': '/pages/sobre.html',
+    '/contato': '/pages/contato.html',
+    '/login': '/pages/login.html',
+
+};
+
+
+async function router() {
+    const path = window.location.pathname
+    const route = routes[path] || '/pages/404.html'
+    loadComponent('#app', route)
+}
+
+
+//Inicialização, evita blank page ao carrecar direto pela url.
+router();
+
+
+

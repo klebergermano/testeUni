@@ -14,8 +14,13 @@ app.use(express.static(pathFrontend));
 
 // Rotas de API (se houver)
 // app.get('/api/...', ...);
+// login
+app.get('/login', (req, res) => {
+    res.sendFile(path.join(pathFrontend, '/pages/login.html'));
+});
 
-// Fallback SPA (SEMPRE por último)
+
+// Fallback 
 app.get(/.*/, (req, res) => {
     res.sendFile(path.join(pathFrontend, 'index.html'));
 });

@@ -1,0 +1,123 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    height: 100vh;
+    /* background: linear-gradient(135deg, #6e4242, #ffffff); */
+    background: #0f0f0f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#bg-login {
+
+    border-radius: 5px;
+    background-color: rgb(172, 20, 40);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    figure {
+        margin-bottom: 40px;
+        margin-top: 40px;
+
+        img {
+            max-width: 100px;
+            height: auto;
+        }
+    }
+
+}
+
+.formulario {
+    background: #fff;
+    padding: 40px 30px;
+    border-radius: 12px;
+    width: 420px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.formulario h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #9b2442;
+}
+
+.card-user {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.card-user input {
+    width: 100%;
+    padding: 10px 8px;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    outline: none;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.card-user input:focus {
+    border-bottom: 2px solid #9b2442;
+}
+
+.card-user label {
+    position: absolute;
+    top: 10px;
+    left: 8px;
+    color: #999;
+    font-size: 14px;
+    pointer-events: none;
+    transition: 0.3s;
+}
+
+.card-user input:focus+label,
+.card-user input:valid+label {
+    top: -10px;
+    left: 5px;
+    font-size: 12px;
+    color: #9b2442;
+}
+
+.forget {
+    display: block;
+    text-align: right;
+    font-size: 13px;
+    color: #9b2442;
+    text-decoration: none;
+    margin-bottom: 20px;
+}
+
+.forget:hover {
+    text-decoration: underline;
+}
+
+.btn-entrar {
+    width: 100%;
+    padding: 12px;
+    background: #9b2442;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-entrar:hover {
+    background: #7d1d36;
+}
+
+hr {
+    margin-top: 20px;
+    border: none;
+    height: 1px;
+    background: #eee;
+}
