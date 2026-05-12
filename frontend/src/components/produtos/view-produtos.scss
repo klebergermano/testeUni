@@ -1,0 +1,58 @@
+.produtos-container {
+    padding: 24px;
+}
+
+.produtos-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 20px;
+}
+
+.produtos-table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    background: white;
+
+    border-radius: 12px;
+    overflow: hidden;
+
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.produtos-table th,
+.produtos-table td {
+    padding: 14px;
+
+    text-align: left;
+
+    border-bottom: 1px solid #eee;
+}
+
+.produtos-table th {
+    background: #9b2442;
+    color: white;
+}
+
+.produtos-table tr:hover {
+    background: #f9f9f9;
+}
+
+.btn-delete {
+    padding: 8px 12px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: #d62828;
+    color: white;
+
+    cursor: pointer;
+}
+
+.btn-delete:hover {
+    opacity: 0.9;
+}
