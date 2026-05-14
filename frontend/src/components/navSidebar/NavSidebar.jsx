@@ -26,27 +26,32 @@ function NavSidebar() {
 
                     <li className="menu-group">
 
-                        <NavLink>
+                        <p className="nav-section">
                             Produtos
-                        </NavLink>
+                        </p>
 
                         <ul className="sub-menu">
                             <li>
                                 <NavLink to='/produtos/view-produto'>
-                                    View Produto
+                                    Ver Produtos
                                 </NavLink>
                             </li>
 
                             <li>
                                 <NavLink to='/produtos/add-produto'>
-                                    + Produto
+                                    Cadastrar Produto
                                 </NavLink>
                             </li>
                         </ul>
 
                     </li>
 
+                    <p className="nav-section">
+                        Usuários
+                    </p>
+
                     <li>
+
                         <NavLink to="/users">
                             Users
                         </NavLink>

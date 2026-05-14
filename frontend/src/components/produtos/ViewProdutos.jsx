@@ -17,10 +17,14 @@ function ViewProdutoa() {
         try {
 
             const response = await fetch(
-                'http://localhost:5000/produtos'
+                'http://localhost:5000/produtos/view'
             );
 
+
+
             const data = await response.json();
+
+            console.log('data', data)
 
             setProdutos(data);
 
@@ -86,8 +90,10 @@ function ViewProdutoa() {
                     <tr>
                         <th>ID</th>
                         <th>Nome</th>
+                        <th>Volume ML</th>
                         <th>Preço</th>
                         <th>Categoria</th>
+                        <th>Descrição</th>
                         <th>Estoque</th>
                         <th>Ações</th>
                     </tr>
@@ -104,20 +110,30 @@ function ViewProdutoa() {
                                 <td>{produto.id}</td>
 
                                 <td>{produto.nome}</td>
+                                <td>{produto.volume_ml}</td>
 
                                 <td>
+
                                     R$ {
-                                        Number(produto.preco)
+                                        Number(produto.preco_venda)
                                             .toFixed(2)
                                     }
                                 </td>
 
-                                <td>{produto.categoria}</td>
+                                <td>{produto.categoria}
+                                </td>
+                                <td>
+                                    <textarea>
 
-                                <td>{produto.estoque}</td>
+                                        {produto.descricao}
+                                    </textarea>
+
+                                </td>
+
+                                <td>{produto.quantidade_estoque}</td>
 
                                 <td>
-
+                                    {/* <button>Editar</button> */}
                                     <button
                                         className="btn-delete"
                                         onClick={() =>

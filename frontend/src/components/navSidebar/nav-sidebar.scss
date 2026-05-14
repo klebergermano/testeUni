@@ -1,8 +1,11 @@
 // nav-lateral.scss
 
 #nav-sidebar {
+
+
+
     width: 270px;
-    height: 100vh;
+    height: 100%;
 
     // position: fixed;
     left: 0;
@@ -15,6 +18,12 @@
     flex-direction: column;
 
     padding: 1.5rem 1rem;
+}
+
+.nav-section {
+    color: #91909096;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 10px 0px;
 }
 
 .user-info {

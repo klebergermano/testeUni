@@ -1,5 +1,9 @@
 import express from 'express';
 const app = express();
+import cors from 'cors';
+
+
+
 
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -12,6 +16,10 @@ import produtoRoutes from './routes/produtoRoutes.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const pathFrontend = path.join(__dirname, '../../frontend');
+
+
+app.use(cors());
+
 
 // Middleware JSON
 app.use(express.json());
