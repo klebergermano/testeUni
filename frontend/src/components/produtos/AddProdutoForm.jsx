@@ -1,22 +1,37 @@
-// AddProdutoForm.jsx
+import { API_URL } from '../../services/api';
 
 import { useState } from "react";
 import "./AddProdutoForm.scss";
 
 function AddProdutoForm() {
     const [formData, setFormData] = useState({
-        nome: "",
-        descricao: "",
+        // nome: "",
+        // descricao: "",
+        // categoria: "Refrigerante",
+        // marca: "",
+        // volume_ml: "",
+        // teor_alcoolico: "",
+        // preco_custo: "",
+        // preco_venda: "",
+        // quantidade_estoque: "",
+        // codigo_barras: "",
+        // imagem: "",
+        // ativo: true
+
+        nome: "Produto teste",
+        descricao: "Teste de produto",
         categoria: "Refrigerante",
-        marca: "",
-        volume_ml: "",
-        teor_alcoolico: "",
-        preco_custo: "",
-        preco_venda: "",
-        quantidade_estoque: "",
-        codigo_barras: "",
+        marca: "Lorem Ipsum",
+        volume_ml: "900",
+        teor_alcoolico: "0.0",
+        preco_custo: "10.00",
+        preco_venda: "20.00",
+        quantidade_estoque: "150",
+        codigo_barras: "N.D",
         imagem: "",
         ativo: true
+
+
     });
 
     function handleChange(e) {
@@ -32,7 +47,7 @@ function AddProdutoForm() {
         e.preventDefault();
 
         try {
-            const response = await fetch("http://localhost:5000/produtos/add", {
+            const response = await fetch(`${API_URL}/produtos/add`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -41,9 +56,9 @@ function AddProdutoForm() {
             });
 
             const data = await response.json();
-
-            console.log(data);
-
+            if (!response.ok) {
+                throw new Error(data.message || "Erro ao cadastrar produto")
+            }
             alert("Produto cadastrado!");
         } catch (error) {
             console.error(error);

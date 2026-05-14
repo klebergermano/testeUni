@@ -1,5 +1,8 @@
+import { API_URL } from '../../services/api';
+
 import { useEffect, useState } from 'react';
 import './view-produtos.scss';
+
 
 function ViewProdutoa() {
 
@@ -17,14 +20,14 @@ function ViewProdutoa() {
         try {
 
             const response = await fetch(
-                'http://localhost:5000/produtos/view'
+                `${API_URL}/produtos/view`
             );
 
 
 
             const data = await response.json();
 
-            console.log('data', data)
+
 
             setProdutos(data);
 
@@ -43,25 +46,29 @@ function ViewProdutoa() {
     async function deletarProduto(id) {
 
         const confirmar = confirm(
-            'Deseja remover este produto?'
+            `Deseja remover este produto? \n Essa ação não podera ser desfeita!`
         );
 
         if (!confirmar) return;
 
         try {
 
-            await fetch(
-                `http://localhost:5000/produtos/${id}`,
+            const response = await fetch(
+                `${API_URL}/produtos/${id}`,
                 {
                     method: 'DELETE'
                 }
             );
+            const data = await response.json();
+            if (!response.ok) throw new Error(data.message || "Erro ao remover produto")
 
             setProdutos(
                 produtos.filter(
                     produto => produto.id !== id
                 )
             );
+
+            alert('Produto removido com sucesso!');
 
         } catch (error) {
 

@@ -1,6 +1,6 @@
 import db from '../database/connection.js';
 
-const listarProdutos = async (req, res) => {
+export const listarProdutos = async (req, res) => {
 
     try {
 
@@ -8,7 +8,7 @@ const listarProdutos = async (req, res) => {
             'SELECT * FROM produtos'
         );
 
-        console.log(rows)
+
         res.json(rows);
 
     } catch (error) {
@@ -22,19 +22,90 @@ const listarProdutos = async (req, res) => {
 
 }
 
+//-----------------------------------------------------
+//-----------Adiciona Produto-------------------------
+//----------------------------------------------------
+export const AddProduto = async (req, res) => {
 
-const criarProduto = (req, res) => {
 
-    const produto = req.body;
+    try {
 
-    res.json({
-        mensagem: 'Produto criado',
-        produto
-    });
+        const {
+            nome,
+            descricao,
+            categoria,
+            marca,
+            volume_ml,
+            teor_alcoolico,
+            preco_custo,
+            preco_venda,
+            quantidade_estoque,
+            codigo_barras,
+            imagem,
+            ativo
+        } = req.body;
+
+        const sql = `
+            INSERT INTO produtos (
+                nome,
+                descricao,
+                categoria,
+                marca,
+                volume_ml,
+                teor_alcoolico,
+                preco_custo,
+                preco_venda,
+                quantidade_estoque,
+                codigo_barras,
+                imagem,
+                ativo
+            )
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        `;
+
+        await db.query(sql, [
+            nome,
+            descricao,
+            categoria,
+            marca,
+            volume_ml,
+            teor_alcoolico,
+            preco_custo,
+            preco_venda,
+            quantidade_estoque,
+            codigo_barras,
+            imagem,
+            ativo
+        ]);
+
+        res.json({
+            success: true,
+            message: 'Produto cadastrado com sucesso'
+        });
+
+    } catch (error) {
+
+        console.error(error);
+
+        res.status(500).json({
+            success: false,
+            error: 'Erro ao cadastrar produto'
+        });
+    }
+
+
+
+
+
+
 
 };
 
-const buscarProduto = (req, res) => {
+//-----------------------------------------------------
+//-----------Busca Produto-------------------------
+//----------------------------------------------------
+
+export const buscarProduto = (req, res) => {
 
     const id = req.params.id;
 
@@ -42,12 +113,58 @@ const buscarProduto = (req, res) => {
 
 };
 
-const deletarProduto = (req, res) => {
+//-----------------------------------------------------
+//-----------DELETAR Produto-------------------------
+//----------------------------------------------------
+export const DeletarProduto = async (req, res) => {
 
-    const id = req.params.id;
-    console.log('Deletar produto' + id)
+
+
+    try {
+
+        const { id } = req.params;
+
+        const [result] = await db.query(
+            'DELETE FROM produtos WHERE id = ?',
+            [id]
+        );
+
+        if (result.affectedRows === 0) {
+
+            return res.status(404).json({
+                success: false,
+                message: 'Produto não encontrado'
+            });
+
+        }
+
+        res.status(200).json({
+            success: true,
+            message: 'Produto removido com sucesso'
+        });
+
+    } catch (error) {
+
+        console.error(error);
+
+        res.status(500).json({
+            success: false,
+            message: 'Erro interno do servidor'
+        });
+
+    }
+
+
+
+
+
+
+
+
+
+
+
 
 };
 
 
-export { listarProdutos, buscarProduto, criarProduto, deletarProduto }
