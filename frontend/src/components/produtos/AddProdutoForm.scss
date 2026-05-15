@@ -1,4 +1,5 @@
 // AddProdutoForm.scss
+@use '../../assets/sass/variables.scss' as *;
 
 .add-produto-container {
     width: 100%;
@@ -63,6 +64,42 @@
         gap: 20px;
     }
 
+    .grid-3 {
+        display: flex;
+        // flex-wrap: wrap;
+
+        //  gap: 20px;
+
+        gap: 10px;
+        flex-shrink: 1;
+
+        //overflow: hidden;
+        //background-color: #3b82f6;
+
+        .form-group {
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 1;
+            padding: 5px;
+
+            border: 2px solid rgb(223, 223, 223);
+            overflow: hidden;
+            // min-width: 100px;
+
+            label {
+                //background-color: red !important;
+                //        max-width: 25%;
+            }
+
+            input {
+
+                //max-width: 100px;
+                text-align: center;
+            }
+        }
+
+    }
+
     .checkbox-group {
         display: flex;
         align-items: center;
@@ -85,7 +122,7 @@
         padding: 14px;
         border: none;
         border-radius: 8px;
-        background: #2563eb;
+        background: $color-primary;
         color: white;
         font-size: 16px;
         font-weight: bold;
@@ -93,7 +130,7 @@
         transition: 0.2s;
 
         &:hover {
-            background: #1d4ed8;
+            background: lighten($color-primary, 10);
         }
     }
 }

@@ -72,59 +72,84 @@ function AddProdutoForm() {
             <form className="add-produto-form" onSubmit={handleSubmit}>
 
                 <h2>Cadastro de Produto</h2>
+                <div className="grid-2">
+                    <div>
 
-                <div className="form-group">
-                    <label>Nome</label>
-                    <input
-                        type="text"
-                        name="nome"
-                        value={formData.nome}
-                        onChange={handleChange}
-                        required
-                    />
+                        <div className="form-group">
+                            <label>Nome</label>
+                            <input
+                                type="text"
+                                name="nome"
+                                value={formData.nome}
+                                onChange={handleChange}
+                                required
+                            />
+                        </div>
+
+                        <div className="form-group">
+                            <label>Marca</label>
+
+                            <input
+                                type="text"
+                                name="marca"
+                                value={formData.marca}
+                                onChange={handleChange}
+                            />
+                        </div>
+
+                        <div className="form-group">
+                            <label>Categoria</label>
+
+                            <select
+                                name="categoria"
+                                value={formData.categoria}
+                                onChange={handleChange}
+                            >
+                                <option>Refrigerante</option>
+                                <option>Suco</option>
+                                <option>Água</option>
+                                <option>Energético</option>
+                                <option>Cerveja</option>
+                                <option>Vinho</option>
+                                <option>Destilado</option>
+                                <option>Drink</option>
+                                <option>Outro</option>
+                            </select>
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div className="form-group">
+                        <label>Descrição</label>
+                        <textarea
+                            name="descricao"
+                            value={formData.descricao}
+                            onChange={handleChange}
+                        />
+                    </div>
+
+
                 </div>
 
-                <div className="form-group">
-                    <label>Descrição</label>
-                    <textarea
-                        name="descricao"
-                        value={formData.descricao}
-                        onChange={handleChange}
-                    />
-                </div>
 
-                <div className="form-group">
-                    <label>Categoria</label>
 
-                    <select
-                        name="categoria"
-                        value={formData.categoria}
-                        onChange={handleChange}
-                    >
-                        <option>Refrigerante</option>
-                        <option>Suco</option>
-                        <option>Água</option>
-                        <option>Energético</option>
-                        <option>Cerveja</option>
-                        <option>Vinho</option>
-                        <option>Destilado</option>
-                        <option>Drink</option>
-                        <option>Outro</option>
-                    </select>
-                </div>
 
-                <div className="form-group">
-                    <label>Marca</label>
 
-                    <input
-                        type="text"
-                        name="marca"
-                        value={formData.marca}
-                        onChange={handleChange}
-                    />
-                </div>
+
+
+
 
                 <div className="grid-2">
+
+
+
+
+                </div>
+
+                <div className="grid-3">
 
                     <div className="form-group">
                         <label>Volume (ml)</label>
@@ -149,9 +174,7 @@ function AddProdutoForm() {
                         />
                     </div>
 
-                </div>
 
-                <div className="grid-2">
 
                     <div className="form-group">
                         <label>Preço de Custo</label>
@@ -177,12 +200,9 @@ function AddProdutoForm() {
                         />
                     </div>
 
-                </div>
-
-                <div className="grid-2">
 
                     <div className="form-group">
-                        <label>Quantidade em Estoque</label>
+                        <label>Qtd. em Estoque</label>
 
                         <input
                             type="number"
@@ -191,6 +211,13 @@ function AddProdutoForm() {
                             onChange={handleChange}
                         />
                     </div>
+
+
+                </div>
+
+                <div className="grid-2">
+
+
 
                     <div className="form-group">
                         <label>Código de Barras</label>

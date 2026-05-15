@@ -3,6 +3,13 @@ import { API_URL } from '../../services/api';
 import { useEffect, useState } from 'react';
 import './view-produtos.scss';
 
+function paraValorBr(numFloat) {
+    return parseFloat(numFloat).toLocaleString('pt-BR', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    })
+
+}
 
 function ViewProdutoa() {
 
@@ -96,12 +103,15 @@ function ViewProdutoa() {
 
                     <tr>
                         <th>ID</th>
-                        <th>Nome</th>
-                        <th>Volume ML</th>
-                        <th>Preço</th>
+
                         <th>Categoria</th>
+
+                        <th>Nome</th>
+                        <th>Estoque UN</th>
+
+                        <th>Volume ML</th>
+                        <th>Preço R$</th>
                         <th>Descrição</th>
-                        <th>Estoque</th>
                         <th>Ações</th>
                     </tr>
 
@@ -114,22 +124,30 @@ function ViewProdutoa() {
 
                             <tr key={produto.id}>
 
-                                <td>{produto.id}</td>
+                                <td className='td-id'>{produto.id}</td>
 
+                                <td className='td-categoria'>{produto.categoria}
+                                </td>
                                 <td>{produto.nome}</td>
+                                <td className='td-estoque'>
+
+                                    {produto.quantidade_estoque}
+
+                                </td>
+
                                 <td>{produto.volume_ml}</td>
 
-                                <td>
+                                <td className='td-preco'>
+                                    <span>{
 
-                                    R$ {
-                                        Number(produto.preco_venda)
-                                            .toFixed(2)
-                                    }
+                                        paraValorBr(produto.preco_venda)
+
+
+                                    }</span>
                                 </td>
 
-                                <td>{produto.categoria}
-                                </td>
-                                <td>
+
+                                <td className='td-desc'>
                                     <textarea>
 
                                         {produto.descricao}
@@ -137,17 +155,19 @@ function ViewProdutoa() {
 
                                 </td>
 
-                                <td>{produto.quantidade_estoque}</td>
 
-                                <td>
-                                    {/* <button>Editar</button> */}
+                                <td className='td-action'>
+                                    <button
+                                        className="btn-edit"
+                                    >Editar</button>
+
                                     <button
                                         className="btn-delete"
                                         onClick={() =>
                                             deletarProduto(produto.id)
                                         }
                                     >
-                                        Excluir
+                                        X
                                     </button>
 
                                 </td>
