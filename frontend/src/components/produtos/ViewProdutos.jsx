@@ -1,5 +1,5 @@
 import { API_URL } from '../../services/api';
-
+import helpers from '../../assets/js/helpers';
 import { useEffect, useState } from 'react';
 import './view-produtos.scss';
 
@@ -140,7 +140,7 @@ function ViewProdutoa() {
                                 <td className='td-preco'>
                                     <span>{
 
-                                        paraValorBr(produto.preco_venda)
+                                        helpers.formatarDecimalBR(produto.preco_venda)
 
 
                                     }</span>

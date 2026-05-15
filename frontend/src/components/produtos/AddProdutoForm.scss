@@ -2,19 +2,21 @@
 @use '../../assets/sass/variables.scss' as *;
 
 .add-produto-container {
-    width: 100%;
+    max-width: 100%;
     display: flex;
     justify-content: center;
     padding: 40px 20px;
-    background: #f4f7fb;
+    //background: #f4f7fb;
     min-height: 100vh;
 }
 
 .add-produto-form {
+    border: 5px solid $color-primary;
     width: 100%;
     max-width: 900px;
-    background: #fff;
+    background: #ffffff;
     padding: 35px;
+    max-height: 700px;
     border-radius: 14px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
 
@@ -35,27 +37,32 @@
             color: #444;
         }
 
-        input,
-        textarea,
-        select {
-            padding: 12px 14px;
-            border: 1px solid #dcdcdc;
-            border-radius: 8px;
-            font-size: 15px;
-            outline: none;
-            transition: 0.2s;
-            background: #fff;
 
-            &:focus {
-                border-color: #3b82f6;
-                box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
-            }
-        }
+    }
 
-        textarea {
-            resize: vertical;
-            min-height: 120px;
+    input,
+    textarea,
+    select {
+        box-sizing: border-box;
+        padding: 12px 14px;
+        border: 1px solid #dcdcdc;
+        border-radius: 5px;
+        font-size: 15px;
+        //outline: none;
+        transition: 0.2s;
+        background: #fff;
+        border-color: $color-primary;
+
+        &:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
         }
+    }
+
+    textarea {
+        resize: vertical;
+        min-height: 120px;
+        height: 100%;
     }
 
     .grid-2 {
@@ -67,37 +74,44 @@
     .grid-3 {
         display: flex;
         // flex-wrap: wrap;
-
         //  gap: 20px;
-
         gap: 10px;
         flex-shrink: 1;
-
+        margin-bottom: 20px;
         //overflow: hidden;
         //background-color: #3b82f6;
+    }
 
-        .form-group {
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 1;
-            padding: 5px;
 
-            border: 2px solid rgb(223, 223, 223);
-            overflow: hidden;
-            // min-width: 100px;
+    .form-group-2 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 1;
+        padding: 10px;
 
-            label {
-                //background-color: red !important;
-                //        max-width: 25%;
-            }
+        border: 2px solid rgb(223, 223, 223);
+        overflow: hidden;
+        // min-width: 100px;
 
-            input {
+        label {
 
-                //max-width: 100px;
-                text-align: center;
-            }
+            width: 100%;
+            padding: 0px !important;
+            margin-bottom: 5px;
+            //margin: 0px !important;
+            //background-color: red !important;
+            //        max-width: 25%;
         }
 
+        input {
+
+            margin: 0px !important;
+
+            max-width: 100%;
+            text-align: center;
+        }
     }
 
     .checkbox-group {
@@ -130,9 +144,17 @@
         transition: 0.2s;
 
         &:hover {
-            background: lighten($color-primary, 10);
+            //background: adjust($color-primary, 50%, 50%)
         }
     }
+}
+
+.preco-custo {
+    color: red;
+}
+
+.preco-venda {
+    color: rgb(4, 109, 0);
 }
 
 @media (max-width: 768px) {

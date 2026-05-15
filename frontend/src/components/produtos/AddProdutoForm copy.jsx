@@ -3,10 +3,21 @@ import { API_URL } from '../../services/api';
 import { useState } from "react";
 import "./AddProdutoForm.scss";
 import helpers from '../../assets/js/helpers';
+
 function AddProdutoForm() {
-
-
     const [formData, setFormData] = useState({
+        // nome: "",
+        // descricao: "",
+        // categoria: "Refrigerante",
+        // marca: "",
+        // volume_ml: "",
+        // teor_alcoolico: "",
+        // preco_custo: "",
+        // preco_venda: "",
+        // quantidade_estoque: "",
+        // codigo_barras: "",
+        // imagem: "",
+        // ativo: true
 
         nome: "Produto teste",
         descricao: "Teste de produto",
@@ -14,109 +25,59 @@ function AddProdutoForm() {
         marca: "Lorem Ipsum",
         volume_ml: "900",
         teor_alcoolico: "0.0",
-
-        // agora em BR
-        preco_custo: "10,00",
-        preco_venda: "20,00",
-
+        preco_custo: "10.00",
+        preco_venda: "20.00",
         quantidade_estoque: "150",
-        codigo_barras: "",
+        codigo_barras: "N.D",
         imagem: "",
         ativo: true
+
+
     });
 
     function handleChange(e) {
-
         const { name, value, type, checked } = e.target;
-
-        // campos monetários
-        if (["preco_custo", "preco_venda"].includes(name)) {
-
-            setFormData((prev) => ({
-                ...prev,
-                [name]: helpers.formatarMoedaBR(value)
-            }));
-
-            return;
-        }
 
         setFormData((prev) => ({
             ...prev,
-            [name]: type === "checkbox"
-                ? checked
-                : value
+            [name]: type === "checkbox" ? checked : value
         }));
     }
 
     async function handleSubmit(e) {
-
         e.preventDefault();
 
-        // converte para float antes de enviar
-        const payload = {
-            ...formData,
-
-            preco_custo: helpers.moedaBRParaFloat(
-                formData.preco_custo
-            ),
-
-            preco_venda: helpers.moedaBRParaFloat(
-                formData.preco_venda
-            )
-        };
-
         try {
-
-            const response = await fetch(
-                `${API_URL}/produtos/add`,
-                {
-                    method: "POST",
-
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-
-                    body: JSON.stringify(payload)
-                }
-            );
+            const response = await fetch(`${API_URL}/produtos/add`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(formData)
+            });
 
             const data = await response.json();
-
             if (!response.ok) {
-                throw new Error(
-                    data.message ||
-                    "Erro ao cadastrar produto"
-                );
+                throw new Error(data.message || "Erro ao cadastrar produto")
             }
-
             alert("Produto cadastrado!");
-
         } catch (error) {
-
             console.error(error);
             alert("Erro ao cadastrar produto");
         }
     }
 
     return (
-
         <div className="add-produto-container">
 
-            <form
-                className="add-produto-form"
-                onSubmit={handleSubmit}
-            >
+            <form className="add-produto-form" onSubmit={handleSubmit}>
 
                 <h2>Cadastro de Produto</h2>
-
                 <div className="grid-2">
-
                     <div>
 
                         <div className="form-group">
-
                             <label>Nome</label>
-
                             <input
                                 type="text"
                                 name="nome"
@@ -124,11 +85,9 @@ function AddProdutoForm() {
                                 onChange={handleChange}
                                 required
                             />
-
                         </div>
 
                         <div className="form-group">
-
                             <label>Marca</label>
 
                             <input
@@ -137,11 +96,9 @@ function AddProdutoForm() {
                                 value={formData.marca}
                                 onChange={handleChange}
                             />
-
                         </div>
 
                         <div className="form-group">
-
                             <label>Categoria</label>
 
                             <select
@@ -149,7 +106,6 @@ function AddProdutoForm() {
                                 value={formData.categoria}
                                 onChange={handleChange}
                             >
-
                                 <option>Refrigerante</option>
                                 <option>Suco</option>
                                 <option>Água</option>
@@ -159,31 +115,38 @@ function AddProdutoForm() {
                                 <option>Destilado</option>
                                 <option>Drink</option>
                                 <option>Outro</option>
-
                             </select>
-
                         </div>
+
 
                     </div>
 
+
+
                     <div className="form-group">
-
                         <label>Descrição</label>
-
                         <textarea
                             name="descricao"
                             value={formData.descricao}
                             onChange={handleChange}
                         />
-
                     </div>
 
+
                 </div>
+
+
+
+
+
+
+
+
+
 
                 <div className="grid-3">
 
                     <div className="form-group-2">
-
                         <label>Volume (ml)</label>
 
                         <input
@@ -192,11 +155,9 @@ function AddProdutoForm() {
                             value={formData.volume_ml}
                             onChange={handleChange}
                         />
-
                     </div>
 
                     <div className="form-group-2">
-
                         <label>Teor Alcoólico (%)</label>
 
                         <input
@@ -206,39 +167,36 @@ function AddProdutoForm() {
                             value={formData.teor_alcoolico}
                             onChange={handleChange}
                         />
-
                     </div>
 
-                    <div className="form-group-2">
 
+
+                    <div className="form-group-2">
                         <label>Preço de Custo</label>
 
                         <input
-                            className="preco-custo"
-                            type="text"
+                            type="number"
+                            step="0.01"
                             name="preco_custo"
                             value={formData.preco_custo}
                             onChange={handleChange}
                         />
-
                     </div>
 
                     <div className="form-group-2">
-
                         <label>Preço de Venda</label>
 
                         <input
-                            className="preco-venda"
                             type="text"
+                            step="0.01"
                             name="preco_venda"
                             value={formData.preco_venda}
                             onChange={handleChange}
                         />
-
                     </div>
 
-                    <div className="form-group-2">
 
+                    <div className="form-group-2">
                         <label>Qtd. em Estoque</label>
 
                         <input
@@ -247,15 +205,16 @@ function AddProdutoForm() {
                             value={formData.quantidade_estoque}
                             onChange={handleChange}
                         />
-
                     </div>
+
 
                 </div>
 
                 <div className="grid-2">
 
-                    <div className="form-group">
 
+
+                    <div className="form-group">
                         <label>Código de Barras</label>
 
                         <input
@@ -264,11 +223,9 @@ function AddProdutoForm() {
                             value={formData.codigo_barras}
                             onChange={handleChange}
                         />
-
                     </div>
 
                     <div className="form-group">
-
                         <label>Imagem (URL)</label>
 
                         <input
@@ -277,22 +234,21 @@ function AddProdutoForm() {
                             value={formData.imagem}
                             onChange={handleChange}
                         />
-
                     </div>
 
                 </div>
 
+
+
                 <div className="checkbox-group">
-                    <label>
-                        <input
-                            type="checkbox"
-                            name="ativo"
-                            checked={formData.ativo}
-                            onChange={handleChange}
-                        />
+                    <input
+                        type="checkbox"
+                        name="ativo"
+                        checked={formData.ativo}
+                        onChange={handleChange}
+                    />
 
-                        Produto ativo</label>
-
+                    <label>Produto ativo</label>
                 </div>
 
                 <button type="submit">
