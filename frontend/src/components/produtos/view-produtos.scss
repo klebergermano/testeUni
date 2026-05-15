@@ -19,6 +19,7 @@ table {
 
 table td {
     text-align: center;
+
 }
 
 .produtos-container {
@@ -37,6 +38,7 @@ table td {
 
 .produtos-table th,
 .produtos-table td {
+    cursor: default;
     padding: 5px;
 
     text-align: center;
