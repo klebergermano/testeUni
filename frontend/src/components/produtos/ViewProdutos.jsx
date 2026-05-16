@@ -1,6 +1,7 @@
 import { API_URL } from '../../services/api';
 import helpers from '../../assets/js/helpers';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import './view-produtos.scss';
 
 function paraValorBr(numFloat) {
@@ -157,9 +158,11 @@ function ViewProdutoa() {
 
 
                                 <td className='td-action'>
-                                    <button
+                                    <Link
+                                        to={`/produtos/editar/${produto.id}`}
                                         className="btn-edit"
-                                    >Editar</button>
+
+                                    >Editar</Link>
 
                                     <button
                                         className="btn-delete"

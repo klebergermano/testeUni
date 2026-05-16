@@ -109,10 +109,13 @@ table td {
     justify-content: center;
 
 
-    button {
+    button,
+    a {
         color: #fff;
         max-width: 50px;
         cursor: pointer;
+        text-decoration: none;
+        display: block;
 
     }
 
@@ -121,7 +124,7 @@ table td {
     .btn-edit {
         float: left;
         background-color: rgb(77, 99, 146);
-        padding: 5px;
+        padding: 8px;
         border-radius: 3px;
         font-size: 11px;
         color: #fff;

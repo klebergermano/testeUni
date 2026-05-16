@@ -1,29 +1,34 @@
 // AddProdutoForm.scss
 @use '../../assets/sass/variables.scss' as *;
 
-.add-produto-container {
+.produto-form-container {
     max-width: 100%;
     display: flex;
     justify-content: center;
     padding: 40px 20px;
-    //background: #f4f7fb;
+    // background: #d9f82b;
     min-height: 100vh;
+
 }
 
-.add-produto-form {
+.produto-form {
     border: 5px solid $color-primary;
     width: 100%;
     max-width: 900px;
     background: #ffffff;
     padding: 35px;
-    max-height: 700px;
+    max-height: 750px;
     border-radius: 14px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
 
     h2 {
         margin-bottom: 30px;
-        color: #222;
+        color: $color-primary;
         font-size: 28px;
+        text-transform: uppercase;
+        font-weight: bolder;
+        border-bottom: 1px solid #cacaca;
+        padding-bottom: 20px;
     }
 
     .form-group {
@@ -159,7 +164,7 @@
 
 @media (max-width: 768px) {
 
-    .add-produto-form {
+    .produto-form {
 
         .grid-2 {
             grid-template-columns: 1fr;

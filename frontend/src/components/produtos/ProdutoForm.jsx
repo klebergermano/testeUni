@@ -1,40 +1,107 @@
-import { API_URL } from '../../services/api';
+import { useEffect, useState } from "react";
+import { API_URL } from "../../services/api";
 
-import { useState } from "react";
-import "./AddProdutoForm.scss";
-import helpers from '../../assets/js/helpers';
-function AddProdutoForm() {
 
+
+function ProdutoForm({
+    produto = null,
+    modo = "criar"
+}) {
+
+    const isEdit = modo === "editar";
+
+    function formatarMoedaBR(valor) {
+
+        valor = valor.replace(/\D/g, "");
+
+        if (!valor) return "";
+
+        valor = (Number(valor) / 100)
+            .toFixed(2);
+
+        return valor.replace(".", ",");
+    }
+
+    function moedaBRParaFloat(valor) {
+
+        if (!valor) return 0;
+
+        return parseFloat(
+            valor.replace(",", ".")
+        );
+    }
 
     const [formData, setFormData] = useState({
 
-        nome: "Produto teste",
-        descricao: "Teste de produto",
+        nome: "",
+        descricao: "",
         categoria: "Refrigerante",
-        marca: "Lorem Ipsum",
-        volume_ml: "900",
-        teor_alcoolico: "0.0",
+        marca: "",
+        volume_ml: "",
+        teor_alcoolico: "",
 
-        // agora em BR
-        preco_custo: "10,00",
-        preco_venda: "20,00",
+        preco_custo: "",
+        preco_venda: "",
 
-        quantidade_estoque: "150",
+        quantidade_estoque: "",
         codigo_barras: "",
         imagem: "",
         ativo: true
     });
 
+    // preenche formulário no modo edição
+    useEffect(() => {
+
+        if (!produto) return;
+
+        setFormData({
+
+            nome: produto.nome || "",
+            descricao: produto.descricao || "",
+            categoria: produto.categoria || "Refrigerante",
+            marca: produto.marca || "",
+            volume_ml: produto.volume_ml || "",
+            teor_alcoolico: produto.teor_alcoolico || "",
+
+            preco_custo: Number(produto.preco_custo || 0)
+                .toFixed(2)
+                .replace(".", ","),
+
+            preco_venda: Number(produto.preco_venda || 0)
+                .toFixed(2)
+                .replace(".", ","),
+
+            quantidade_estoque:
+                produto.quantidade_estoque || "",
+
+            codigo_barras:
+                produto.codigo_barras || "",
+
+            imagem: produto.imagem || "",
+
+            ativo: produto.ativo ?? true
+        });
+
+    }, [produto]);
+
     function handleChange(e) {
 
-        const { name, value, type, checked } = e.target;
+        const {
+            name,
+            value,
+            type,
+            checked
+        } = e.target;
 
-        // campos monetários
-        if (["preco_custo", "preco_venda"].includes(name)) {
+        // formatação monetária
+        if (
+            ["preco_custo", "preco_venda"]
+                .includes(name)
+        ) {
 
             setFormData((prev) => ({
                 ...prev,
-                [name]: helpers.formatarMoedaBR(value)
+                [name]: formatarMoedaBR(value)
             }));
 
             return;
@@ -42,9 +109,10 @@ function AddProdutoForm() {
 
         setFormData((prev) => ({
             ...prev,
-            [name]: type === "checkbox"
-                ? checked
-                : value
+            [name]:
+                type === "checkbox"
+                    ? checked
+                    : value
         }));
     }
 
@@ -52,28 +120,39 @@ function AddProdutoForm() {
 
         e.preventDefault();
 
-        // converte para float antes de enviar
         const payload = {
+
             ...formData,
 
-            preco_custo: helpers.moedaBRParaFloat(
-                formData.preco_custo
-            ),
+            preco_custo:
+                moedaBRParaFloat(
+                    formData.preco_custo
+                ),
 
-            preco_venda: helpers.moedaBRParaFloat(
-                formData.preco_venda
-            )
+            preco_venda:
+                moedaBRParaFloat(
+                    formData.preco_venda
+                )
         };
 
         try {
 
+            const endpoint = isEdit
+                ? `${API_URL}/produtos/update/${produto.id}`
+                : `${API_URL}/produtos/add`;
+
+            const method = isEdit
+                ? "PUT"
+                : "POST";
+
             const response = await fetch(
-                `${API_URL}/produtos/add`,
+                endpoint,
                 {
-                    method: "POST",
+                    method,
 
                     headers: {
-                        "Content-Type": "application/json"
+                        "Content-Type":
+                            "application/json"
                     },
 
                     body: JSON.stringify(payload)
@@ -83,31 +162,47 @@ function AddProdutoForm() {
             const data = await response.json();
 
             if (!response.ok) {
+
                 throw new Error(
                     data.message ||
-                    "Erro ao cadastrar produto"
+                    "Erro ao salvar produto"
                 );
             }
 
-            alert("Produto cadastrado!");
+            alert(
+                isEdit
+                    ? "Produto atualizado!"
+                    : "Produto cadastrado!"
+            );
 
         } catch (error) {
 
             console.error(error);
-            alert("Erro ao cadastrar produto");
+
+            alert(
+                isEdit
+                    ? "Erro ao atualizar produto"
+                    : "Erro ao cadastrar produto"
+            );
         }
     }
 
     return (
 
-        <div className="add-produto-container">
+        <div className="produto-form-container">
 
             <form
-                className="add-produto-form"
+                className="produto-form"
                 onSubmit={handleSubmit}
             >
 
-                <h2>Cadastro de Produto</h2>
+                <h2>
+                    {
+                        isEdit
+                            ? "Editar Produto"
+                            : "Cadastrar Produto"
+                    }
+                </h2>
 
                 <div className="grid-2">
 
@@ -197,7 +292,9 @@ function AddProdutoForm() {
 
                     <div className="form-group-2">
 
-                        <label>Teor Alcoólico (%)</label>
+                        <label>
+                            Teor Alcoólico (%)
+                        </label>
 
                         <input
                             type="number"
@@ -211,10 +308,11 @@ function AddProdutoForm() {
 
                     <div className="form-group-2">
 
-                        <label>Preço de Custo</label>
+                        <label>
+                            Preço de Custo
+                        </label>
 
                         <input
-                            className="preco-custo"
                             type="text"
                             name="preco_custo"
                             value={formData.preco_custo}
@@ -225,10 +323,11 @@ function AddProdutoForm() {
 
                     <div className="form-group-2">
 
-                        <label>Preço de Venda</label>
+                        <label>
+                            Preço de Venda
+                        </label>
 
                         <input
-                            className="preco-venda"
                             type="text"
                             name="preco_venda"
                             value={formData.preco_venda}
@@ -239,12 +338,16 @@ function AddProdutoForm() {
 
                     <div className="form-group-2">
 
-                        <label>Qtd. em Estoque</label>
+                        <label>
+                            Qtd. em Estoque
+                        </label>
 
                         <input
                             type="number"
                             name="quantidade_estoque"
-                            value={formData.quantidade_estoque}
+                            value={
+                                formData.quantidade_estoque
+                            }
                             onChange={handleChange}
                         />
 
@@ -256,7 +359,9 @@ function AddProdutoForm() {
 
                     <div className="form-group">
 
-                        <label>Código de Barras</label>
+                        <label>
+                            Código de Barras
+                        </label>
 
                         <input
                             type="text"
@@ -269,7 +374,9 @@ function AddProdutoForm() {
 
                     <div className="form-group">
 
-                        <label>Imagem (URL)</label>
+                        <label>
+                            Imagem (URL)
+                        </label>
 
                         <input
                             type="text"
@@ -283,20 +390,28 @@ function AddProdutoForm() {
                 </div>
 
                 <div className="checkbox-group">
-                    <label>
-                        <input
-                            type="checkbox"
-                            name="ativo"
-                            checked={formData.ativo}
-                            onChange={handleChange}
-                        />
 
-                        Produto ativo</label>
+                    <input
+                        type="checkbox"
+                        name="ativo"
+                        checked={formData.ativo}
+                        onChange={handleChange}
+                    />
+
+                    <label>
+                        Produto ativo
+                    </label>
 
                 </div>
 
                 <button type="submit">
-                    Cadastrar Produto
+
+                    {
+                        isEdit
+                            ? "Salvar Alterações"
+                            : "Cadastrar Produto"
+                    }
+
                 </button>
 
             </form>
@@ -305,4 +420,4 @@ function AddProdutoForm() {
     );
 }
 
-export default AddProdutoForm;
+export default ProdutoForm;

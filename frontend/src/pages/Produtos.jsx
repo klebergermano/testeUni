@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 import { Routes, Route } from "react-router-dom"
-import AddProdutoForm from "../components/produtos/AddProdutoForm"
+import AddProduto from "../components/produtos/AddProduto.jsx"
+import EditProduto from "../components/produtos/EditProduto.jsx"
 import ViewProdutos from "../components/produtos/ViewProdutos"
 function Produtos() {
 
@@ -12,7 +13,8 @@ function Produtos() {
 
             <Routes>
                 <Route path='view-produto' element={<ViewProdutos />} />
-                <Route path='add-produto' element={<AddProdutoForm />} />
+                <Route path='add-produto' element={<AddProduto />} />
+                <Route path='editar/:id' element={<EditProduto />} />
 
             </Routes>
 

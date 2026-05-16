@@ -105,9 +105,36 @@ export const AddProduto = async (req, res) => {
 //-----------Busca Produto-------------------------
 //----------------------------------------------------
 
-export const buscarProduto = (req, res) => {
+export const buscarProduto = async (req, res) => {
 
-    const id = req.params.id;
+    try {
+
+        const { id } = req.params;
+
+        const [rows] = await db.query(
+            "SELECT * FROM produtos WHERE id = ?",
+            [id]
+        );
+
+        // produto não encontrado
+        if (rows.length === 0) {
+
+            return res.status(404).json({
+                message: "Produto não encontrado"
+            });
+        }
+
+        // retorna o produto
+        res.status(200).json(rows[0]);
+
+    } catch (error) {
+
+        console.error(error);
+
+        res.status(500).json({
+            message: "Erro ao buscar produto"
+        });
+    }
 
 
 
@@ -118,10 +145,7 @@ export const buscarProduto = (req, res) => {
 //----------------------------------------------------
 export const DeletarProduto = async (req, res) => {
 
-
-
     try {
-
         const { id } = req.params;
 
         const [result] = await db.query(

@@ -6,7 +6,7 @@ const router = express.Router();
 
 
 router.get('/view', listarProdutos);
-router.get('/buscar:id', buscarProduto);
+router.get('/buscar/:id', buscarProduto);
 router.post('/add', AddProduto);
 router.delete('/:id', DeletarProduto);
 
