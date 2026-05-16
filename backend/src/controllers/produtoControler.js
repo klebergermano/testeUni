@@ -1,5 +1,8 @@
 import db from '../database/connection.js';
 
+//-----------------------------------------------------
+//-----------LISTA Produto-------------------------
+//----------------------------------------------------
 export const listarProdutos = async (req, res) => {
 
     try {
@@ -23,7 +26,7 @@ export const listarProdutos = async (req, res) => {
 }
 
 //-----------------------------------------------------
-//-----------Adiciona Produto-------------------------
+//-----------ADD Produto-------------------------
 //----------------------------------------------------
 export const AddProduto = async (req, res) => {
 
@@ -102,7 +105,7 @@ export const AddProduto = async (req, res) => {
 };
 
 //-----------------------------------------------------
-//-----------Busca Produto-------------------------
+//-----------BUSCA Produto-------------------------
 //----------------------------------------------------
 
 export const buscarProduto = async (req, res) => {
@@ -179,6 +182,8 @@ export const DeletarProduto = async (req, res) => {
     }
 
 
+    //produtos/update/$
+
 
 
 
@@ -192,3 +197,89 @@ export const DeletarProduto = async (req, res) => {
 };
 
 
+//-----------------------------------------------------
+//-----------UPDATE Produto-------------------------
+//----------------------------------------------------
+export const AtualizarProduto = async (req, res) => {
+
+    try {
+
+        const { id } = req.params;
+
+        const {
+            nome,
+            descricao,
+            categoria,
+            marca,
+            volume_ml,
+            teor_alcoolico,
+            preco_custo,
+            preco_venda,
+            quantidade_estoque,
+            codigo_barras,
+            imagem,
+            ativo
+        } = req.body;
+
+        const [result] = await db.query(
+            `
+            UPDATE produtos
+            SET
+                nome = ?,
+                descricao = ?,
+                categoria = ?,
+                marca = ?,
+                volume_ml = ?,
+                teor_alcoolico = ?,
+                preco_custo = ?,
+                preco_venda = ?,
+                quantidade_estoque = ?,
+                codigo_barras = ?,
+                imagem = ?,
+                ativo = ?,
+                updated_at = CURRENT_TIMESTAMP
+            WHERE id = ?
+            `,
+            [
+                nome,
+                descricao,
+                categoria,
+                marca,
+                volume_ml,
+                teor_alcoolico,
+                preco_custo,
+                preco_venda,
+                quantidade_estoque,
+                codigo_barras,
+                imagem,
+                ativo,
+                id
+            ]
+        );
+
+        if (result.affectedRows === 0) {
+
+            return res.status(404).json({
+                success: false,
+                message: 'Produto não encontrado'
+            });
+
+        }
+
+        res.status(200).json({
+            success: true,
+            message: 'Produto atualizado com sucesso'
+        });
+
+    } catch (error) {
+
+        console.error(error);
+
+        res.status(500).json({
+            success: false,
+            message: 'Erro interno do servidor'
+        });
+
+    }
+
+};
