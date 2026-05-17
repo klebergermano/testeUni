@@ -1,113 +1,135 @@
-/* src/pages/Login/Login.scss */
+@use '../../assets/sass/variables.scss' as *;
 
-.login {
+#root {
     width: 100%;
-    min-height: 100vh;
+    width: 100%;
+    height: 100vh;
+    // background: linear-gradient(135deg, #6e4242, #ffffff);
+    background: #0f0f0f;
+    background: #0e1214 url("../../assets/img/bg-login-3.png");
 
     display: flex;
     align-items: center;
     justify-content: center;
+}
 
-    background: #f4f6f9;
+body {}
 
-    padding: 20px;
+#bg-login {
+    border-radius: 15px;
+    background-color: $color-primary;
 
-    .login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+
+    figure {
+        margin: 40px 0;
+
+        img {
+            max-width: 100px;
+            height: auto;
+        }
+    }
+}
+
+.formulario {
+    background: #fff;
+    padding: 40px 40px;
+    border-radius: 0 0 10px 10px;
+    width: 450px;
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+
+    h2 {
+        text-align: center;
+        margin-bottom: 25px;
+        color: $color-primary;
+    }
+
+    hr {
+        margin-top: 20px;
+        border: none;
+        height: 1px;
+        background: #eee;
+    }
+}
+
+.card-user {
+    position: relative;
+    margin-bottom: 25px;
+
+    input {
         width: 100%;
-        max-width: 420px;
+        padding: 10px 8px;
 
-        background: #fff;
+        border: none;
+        border-bottom: 2px solid #ccc;
 
-        padding: 40px;
+        outline: none;
+        font-size: 16px;
 
-        border-radius: 12px;
+        transition: 0.3s;
 
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-
-        h1 {
-            font-size: 2rem;
-            margin-bottom: 10px;
-            text-align: center;
-            color: #222;
+        &:focus {
+            border-bottom: 2px solid $color-primary;
         }
 
-        .subtitle {
-            text-align: center;
-            margin-bottom: 30px;
-            color: #666;
+        &:focus+label,
+        &:valid+label {
+            top: -10px;
+            left: 5px;
+
+            font-size: 12px;
+            color: $color-primary;
         }
+    }
 
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
+    label {
+        position: absolute;
+        top: 10px;
+        left: 8px;
 
-        .input-group {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
+        color: #999;
+        font-size: 14px;
 
-            label {
-                font-size: 0.95rem;
-                font-weight: 600;
-                color: #333;
-            }
+        pointer-events: none;
+        transition: 0.3s;
+    }
+}
 
-            input {
-                height: 48px;
+.forget {
+    display: block;
+    text-align: right;
 
-                padding: 0 14px;
+    font-size: 13px;
+    color: $color-primary;
 
-                border: 1px solid #ccc;
-                border-radius: 8px;
+    text-decoration: none;
+    margin-bottom: 20px;
 
-                font-size: 1rem;
+    &:hover {
+        text-decoration: underline;
+    }
+}
 
-                transition: 0.2s;
+.btn-entrar {
+    width: 100%;
+    padding: 12px;
 
-                &:focus {
-                    outline: none;
-                    border-color: #4f46e5;
-                }
-            }
-        }
+    background: $color-primary;
+    border: none;
+    border-radius: 8px;
 
-        .erro {
-            background: #ffe5e5;
-            color: #c62828;
+    color: #fff;
+    font-size: 16px;
 
-            padding: 12px;
+    cursor: pointer;
+    transition: 0.3s;
 
-            border-radius: 8px;
-
-            font-size: 0.95rem;
-        }
-
-        button {
-            height: 50px;
-
-            border: none;
-            border-radius: 8px;
-
-            background: #4f46e5;
-            color: white;
-
-            font-size: 1rem;
-            font-weight: 600;
-
-            cursor: pointer;
-
-            transition: 0.2s;
-
-            &:hover {
-                background: #4338ca;
-            }
-
-            &:disabled {
-                opacity: 0.7;
-                cursor: not-allowed;
-            }
-        }
+    &:hover {
+        background: #7d1d36;
     }
 }

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import "./Login.scss";
+import logo from "../../assets/img/logo.png";
 import { API_URL } from "../../services/api";
 
 export default function Login() {
@@ -65,69 +66,52 @@ export default function Login() {
     };
 
     return (
-        <main className="login">
+        <div id="bg-login">
+            <figure>
+                <img
+                    src={logo}
+                    alt="logo nova bebidas"
+                />
+            </figure>
 
-            <div className="login-container">
+            <form className="formulario">
+                <h2>Acessar:</h2>
 
-                <h1>Painel Admin</h1>
+                <div className="card-user">
+                    <input
+                        type="text"
+                        required
+                    />
+                    <label>Usuário</label>
+                </div>
 
-                <p className="subtitle">
-                    Faça login para continuar
-                </p>
+                <div className="card-user">
+                    <input
+                        type="password"
+                        required
+                    />
+                    <label>Senha</label>
+                </div>
 
-                <form onSubmit={handleSubmit}>
+                <div>
+                    <a href="#" className="forget">
+                        Esqueceu a senha?
+                    </a>
+                </div>
 
-                    <div className="input-group">
-                        <label>Email</label>
-
-                        <input
-                            type="email"
-                            placeholder="Digite seu email"
-                            value={email}
-                            onChange={(e) =>
-                                setEmail(e.target.value)
-                            }
-                            required
-                        />
-                    </div>
-
-                    <div className="input-group">
-                        <label>Senha</label>
-
-                        <input
-                            type="password"
-                            placeholder="Digite sua senha"
-                            value={senha}
-                            onChange={(e) =>
-                                setSenha(e.target.value)
-                            }
-                            required
-                        />
-                    </div>
-
-                    {
-                        erro && (
-                            <div className="erro">
-                                {erro}
-                            </div>
-                        )
-                    }
-
+                <div>
                     <button
                         type="submit"
-                        disabled={loading}
+                        className="btn-entrar"
                     >
-                        {
-                            loading
-                                ? "Entrando..."
-                                : "Entrar"
-                        }
+                        Entrar
                     </button>
+                </div>
 
-                </form>
-
-            </div>
-
-        </main>
+                <div>
+                    <hr />
+                </div>
+            </form>
+        </div>
     );
 }
