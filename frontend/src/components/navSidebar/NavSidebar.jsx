@@ -32,7 +32,7 @@ function NavSidebar() {
 
                         <ul className="sub-menu">
                             <li>
-                                <NavLink to='/produtos/view-produto'>
+                                <NavLink to='/produtos/view-produtos'>
                                     Ver Produtos
                                 </NavLink>
                             </li>
