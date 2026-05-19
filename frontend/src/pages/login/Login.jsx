@@ -13,6 +13,7 @@ export default function Login() {
     const [erro, setErro] = useState("");
 
     const handleSubmit = async (e) => {
+
         e.preventDefault();
 
         setErro("");
@@ -27,7 +28,6 @@ export default function Login() {
                     headers: {
                         "Content-Type": "application/json"
                     },
-                    credentials: "include",
                     body: JSON.stringify({
                         email,
                         senha
@@ -38,20 +38,26 @@ export default function Login() {
             const data = await response.json();
 
             if (!response.ok) {
+
                 throw new Error(
-                    data.erro || "Erro ao fazer login"
+                    data.message || "Erro ao fazer login"
                 );
+
             }
 
-            console.log(data);
-
-            // salvar token
+            // salva token
             localStorage.setItem(
                 "token",
-                data.accessToken
+                data.token
             );
 
-            // redirecionar
+            // salva usuário
+            localStorage.setItem(
+                "user",
+                JSON.stringify(data.user)
+            );
+
+            // redireciona
             window.location.href = "/";
 
         } catch (error) {
@@ -63,10 +69,13 @@ export default function Login() {
             setLoading(false);
 
         }
+
     };
 
     return (
+
         <div id="bg-login">
+
             <figure>
                 <img
                     src={logo}
@@ -74,44 +83,81 @@ export default function Login() {
                 />
             </figure>
 
-            <form className="formulario">
+            <form
+                className="formulario"
+                onSubmit={handleSubmit}
+            >
+
                 <h2>Acessar:</h2>
 
+                {
+                    erro && (
+                        <p className="erro-login">
+                            {erro}
+                        </p>
+                    )
+                }
+
                 <div className="card-user">
+
                     <input
-                        type="text"
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                         required
                     />
-                    <label>Usuário</label>
+
+                    <label>Email</label>
+
                 </div>
 
                 <div className="card-user">
+
                     <input
                         type="password"
+                        value={senha}
+                        onChange={(e) => setSenha(e.target.value)}
                         required
                     />
+
                     <label>Senha</label>
+
                 </div>
 
                 <div>
+
                     <a href="#" className="forget">
                         Esqueceu a senha?
                     </a>
+
                 </div>
 
                 <div>
+
                     <button
                         type="submit"
                         className="btn-entrar"
+                        disabled={loading}
                     >
-                        Entrar
+
+                        {
+                            loading
+                                ? "Entrando..."
+                                : "Entrar"
+                        }
+
                     </button>
+
                 </div>
 
                 <div>
                     <hr />
                 </div>
+
             </form>
+
         </div>
+
     );
+
 }

@@ -2,26 +2,45 @@ import { NavLink } from "react-router-dom";
 import "./nav-sidebar.scss";
 
 function NavSidebar() {
+
+    const user = JSON.parse(
+        localStorage.getItem("user")
+    );
+
     return (
+
         <aside id="nav-sidebar">
 
             <div className="user-info">
+
                 <img
-                    src="https://placehold.co/80x80"
+                    src={
+                        user?.img_url ||
+                        "https://placehold.co/80x80"
+                    }
                     alt="Usuário"
                 />
 
-                <h3>João Silva</h3>
-                <span>Administrador</span>
+                <h3>
+                    {user?.nome || "Usuário"}
+                </h3>
+
+                <span>
+                    {user?.cargo || "Sem cargo"}
+                </span>
+
             </div>
 
             <nav id='nav-lateral'>
+
                 <ul>
 
                     <li>
+
                         <NavLink to="/">
                             Início
                         </NavLink>
+
                     </li>
 
                     <li className="menu-group">
@@ -31,17 +50,23 @@ function NavSidebar() {
                         </p>
 
                         <ul className="sub-menu">
+
                             <li>
+
                                 <NavLink to='/produtos/view-produtos'>
                                     Ver Produtos
                                 </NavLink>
+
                             </li>
 
                             <li>
+
                                 <NavLink to='/produtos/add-produto'>
                                     Cadastrar Produto
                                 </NavLink>
+
                             </li>
+
                         </ul>
 
                     </li>
@@ -49,6 +74,7 @@ function NavSidebar() {
                     <p className="nav-section">
                         Usuários
                     </p>
+
                     <ul className="sub-menu">
 
                         <li>
@@ -56,6 +82,7 @@ function NavSidebar() {
                             <NavLink to="/users/view">
                                 Listar Usuários
                             </NavLink>
+
                         </li>
 
                         <li>
@@ -63,13 +90,19 @@ function NavSidebar() {
                             <NavLink to="/users/add">
                                 Cadastrar Usuários
                             </NavLink>
+
                         </li>
+
                     </ul>
+
                 </ul>
+
             </nav>
 
         </aside>
+
     );
+
 }
 
 export default NavSidebar;

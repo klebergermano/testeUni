@@ -97,7 +97,7 @@ function ViewUsuarios() {
                 <thead>
 
                     <tr>
-
+                        <th></th>
                         <th>ID</th>
                         <th>Nome</th>
                         <th>Email</th>
@@ -117,6 +117,13 @@ function ViewUsuarios() {
 
                             <tr key={usuario.id}>
 
+                                <td className='td-icon'>
+                                    <figure>
+
+                                        <img src={usuario.img_url} />
+
+                                    </figure>
+                                </td>
                                 <td className='td-id'>
                                     {usuario.id}
                                 </td>
@@ -140,7 +147,7 @@ function ViewUsuarios() {
                                 <td className='td-status'>
 
                                     {
-                                        usuario.ativo
+                                        usuario.status
                                             ? 'Ativo'
                                             : 'Inativo'
                                     }

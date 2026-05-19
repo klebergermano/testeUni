@@ -4,11 +4,11 @@ import cors from 'cors';
 
 
 
-
 import path from 'path';
 import { fileURLToPath } from 'url';
-import produtoRoutes from './routes/produtoRoutes.js';
 import UserRoutes from './routes/UserRoutes.js';
+import produtoRoutes from './routes/produtoRoutes.js';
+import LoginRoutes from "./routes/LoginRoutes.js";
 
 
 
@@ -21,7 +21,6 @@ const pathFrontend = path.join(__dirname, '../../frontend');
 
 app.use(cors());
 
-
 // Middleware JSON
 app.use(express.json());
 
@@ -29,9 +28,10 @@ app.use(express.json());
 app.use(express.static(pathFrontend));
 
 //Routes
+app.use("/login", LoginRoutes);
 app.use('/produtos', produtoRoutes);
 app.use('/users', UserRoutes);
-//app.use('/usuarios', usuarioRoutes);
+
 
 
 
