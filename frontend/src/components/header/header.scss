@@ -81,12 +81,15 @@ header {
 
                 }
 
-                li a {
-                    padding: 15px 20px;
+                li a,
+                button {
+                    display: block;
+                    padding: 5px 20px;
                     background-color: #313131;
                     text-decoration: none;
-                    border-radius: 10px;
+                    border-radius: 5px;
                     color: #ffffff;
+                    border: 0px;
 
                 }
             }

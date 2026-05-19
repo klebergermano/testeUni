@@ -1,46 +1,64 @@
-
 import img from '../../assets/img/logo.png'
-import { Link } from 'react-router-dom'
 import './header.scss'
 
 function Header() {
 
+    const handleLogout = () => {
+
+        // remove dados do usuário
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+
+        // redireciona
+        window.location.href = "/login";
+
+    };
+
     return (
-        <>
-            <header>
-                <div id="header-center">
 
-                    <div className="flex-item">
+        <header>
 
-                        <h1>
-                            <figure id="bg-logos">
-                                <img src={img} />
-                            </figure>
-                            Gerenciador de Estoque</h1>
+            <div id="header-center">
 
+                <div className="flex-item">
 
-                    </div>
-                    <div className="flex-item" id="bg-nav">
-                        <div id="bg-login-info">
+                    <h1>
 
+                        <figure id="bg-logos">
+                            <img
+                                src={img}
+                                alt="Logo"
+                            />
+                        </figure>
 
-                            <li>
-                                <a href="/login">Login</a>
+                        Gerenciador de Estoque
 
-                            </li>
-                        </div>
-
-
-
-                    </div>
-
+                    </h1>
 
                 </div>
 
+                <div
+                    className="flex-item"
+                    id="bg-nav"
+                >
 
+                    <div id="bg-login-info">
 
-            </header>
-        </>
+                        <button
+                            className="btn-logout"
+                            onClick={handleLogout}
+                        >
+                            Sair
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
     )
 
 }

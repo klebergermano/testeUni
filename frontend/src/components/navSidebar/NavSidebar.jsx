@@ -1,4 +1,16 @@
 import { NavLink } from "react-router-dom";
+// import { FaShoppingBasket } from "react-icons/fa";
+import { BsFillClipboardPlusFill } from "react-icons/bs";
+import {
+    FaShoppingBasket,
+    FaHome,
+    FaBoxOpen,
+    FaPlus,
+    FaUsers,
+    FaUserPlus,
+    FaClipboardList
+} from "react-icons/fa";
+
 import "./nav-sidebar.scss";
 
 function NavSidebar() {
@@ -38,7 +50,13 @@ function NavSidebar() {
                     <li>
 
                         <NavLink to="/">
-                            Início
+
+                            <FaHome />
+
+                            <span>
+                                Início
+                            </span>
+
                         </NavLink>
 
                     </li>
@@ -54,7 +72,13 @@ function NavSidebar() {
                             <li>
 
                                 <NavLink to='/produtos/view-produtos'>
-                                    Ver Produtos
+
+                                    <FaClipboardList />
+
+                                    <span>
+                                        Listar
+                                    </span>
+
                                 </NavLink>
 
                             </li>
@@ -62,7 +86,13 @@ function NavSidebar() {
                             <li>
 
                                 <NavLink to='/produtos/add-produto'>
-                                    Cadastrar Produto
+                                    {/* <FaPlus /> */}
+                                    <BsFillClipboardPlusFill />
+                                    <span>
+                                        Cadastrar
+                                    </span>
+
+
                                 </NavLink>
 
                             </li>
@@ -71,29 +101,45 @@ function NavSidebar() {
 
                     </li>
 
-                    <p className="nav-section">
-                        Usuários
-                    </p>
+                    <li className="menu-group">
 
-                    <ul className="sub-menu">
+                        <p className="nav-section">
+                            Usuários
+                        </p>
 
-                        <li>
+                        <ul className="sub-menu">
 
-                            <NavLink to="/users/view">
-                                Listar Usuários
-                            </NavLink>
+                            <li>
 
-                        </li>
+                                <NavLink to="/users/view">
 
-                        <li>
+                                    <FaUsers />
 
-                            <NavLink to="/users/add">
-                                Cadastrar Usuários
-                            </NavLink>
+                                    <span>
+                                        Listar
+                                    </span>
 
-                        </li>
+                                </NavLink>
 
-                    </ul>
+                            </li>
+
+                            <li>
+
+                                <NavLink to="/users/add">
+
+                                    <FaUserPlus />
+
+                                    <span>
+                                        Cadastrar
+                                    </span>
+
+                                </NavLink>
+
+                            </li>
+
+                        </ul>
+
+                    </li>
 
                 </ul>
 
