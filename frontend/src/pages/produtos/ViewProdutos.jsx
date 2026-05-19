@@ -94,11 +94,11 @@ function ViewProdutoa() {
 
     return (
 
-        <div className="produtos-container">
+        <div className="bg-table">
 
 
 
-            <table className="produtos-table">
+            <table className="view-table">
 
                 <thead>
 

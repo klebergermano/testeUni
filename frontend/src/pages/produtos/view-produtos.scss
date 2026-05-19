@@ -1,152 +1,156 @@
 @use '../../assets/sass/variables.scss' as *;
 
-table {
-    width: 100%;
 
-    border-collapse: collapse;
-
-    background: white;
-
-    border-radius: 12px;
-    overflow: hidden;
-
-    box-shadow: 0px 3px 2px rgba(0, 0, 0, 0.79);
-    max-width: 1600px;
-    margin: 0 auto;
-    border: 5px solid $color-primary;
-}
-
-
-table td {
-    text-align: center;
-
-}
-
-.produtos-container {
+.bg-table {
     padding: 24px;
-}
-
-.produtos-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    margin-bottom: 20px;
-}
-
-.produtos-table {}
-
-.produtos-table th,
-.produtos-table td {
-    cursor: default;
-    padding: 5px;
-
-    text-align: center;
-    vertical-align: middle;
-    color: rgb(59, 59, 59);
-
-    border: 1px solid #bda2a27c;
-}
-
-.produtos-table th {
-    background: #9b2442;
-    color: white;
-    padding: 10px;
-}
-
-.produtos-table tr:hover {
-    background: #fcf6be;
-}
 
 
-.td-id {
-    background-color: #f8f8f859;
-    color: #b4b4b4 !important;
-    max-width: 50px;
-}
 
-.td-estoque {
-    background: #fff2a71f;
+    .view-table {
+        width: 100%;
 
-    color: #000;
-    font-weight: bolder !important;
+        border-collapse: collapse;
 
+        background: white;
 
-}
+        border-radius: 12px;
+        overflow: hidden;
 
-.td-desc {
-    //display: flex;
-    padding: 3px !important;
-    //background: #dbdbdb;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    max-width: 100px;
-
-    textarea {
-        color: #4d4c4c;
-        display: flex;
-
-        width: 95%;
-        height: 100%;
+        box-shadow: 0px 3px 2px rgba(0, 0, 0, 0.79);
+        max-width: 1600px;
         margin: 0 auto;
-        border: 0 solid #ff004c !important;
+        border: 5px solid $color-primary;
 
-    }
-}
-
-.td-preco {
-    color: #868686 !important;
-
-    span {
-        color: #096e00;
-    }
-}
-
-.td-action {
-    width: 90px !important;
-    //display: flex;
-    justify-content: center;
-
-
-    button,
-    a {
-        color: #fff;
-        max-width: 50px;
-        cursor: pointer;
-        text-decoration: none;
-        display: block;
-
-    }
-
-    // background-color: #5e56563a;
-
-    .btn-edit {
-        float: left;
-        background-color: rgb(77, 99, 146);
-        padding: 8px;
-        border-radius: 3px;
-        font-size: 11px;
-        color: #fff;
-        cursor: pointer;
-
-
-        &:hover {
-            background-color: #282bd6;
+        tr:hover {
+            background: #fcf6be;
         }
-    }
 
-    .btn-delete {
-        max-width: 45%;
 
-        float: right;
-        background-color: rgb(184, 181, 181);
-        padding: 5px;
-        border-radius: 3px;
-        font-size: 11px;
 
-        &:hover {
-            background-color: #d62828;
+        th,
+        td {
+            cursor: default;
+            padding: 5px;
+
+            text-align: center;
+            vertical-align: middle;
+            color: rgb(59, 59, 59);
+
+            border: 1px solid #bda2a27c;
         }
+
+
+
+
+        th {
+            background: #9b2442;
+            color: white;
+            padding: 10px;
+        }
+
+
+
+        .td-id {
+            background-color: #f8f8f859;
+            color: #b4b4b4 !important;
+            max-width: 50px;
+        }
+
+        .td-estoque {
+            background: #fff2a71f;
+
+            color: #000;
+            font-weight: bolder !important;
+
+
+        }
+
+        .td-desc {
+            //display: flex;
+            padding: 3px !important;
+            //background: #dbdbdb;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            max-width: 100px;
+
+            textarea {
+                color: #4d4c4c;
+                display: flex;
+
+                width: 95%;
+                height: 100%;
+                margin: 0 auto;
+                border: 0 solid #ff004c !important;
+
+            }
+        }
+
+        .td-preco {
+            color: #868686 !important;
+
+            span {
+                color: #096e00;
+            }
+        }
+
+        .td-action {
+            width: 90px !important;
+            //display: flex;
+            justify-content: center;
+
+
+            button,
+            a {
+                color: #fff;
+                max-width: 50px;
+                cursor: pointer;
+                text-decoration: none;
+                display: block;
+
+            }
+
+            // background-color: #5e56563a;
+
+            .btn-edit {
+                float: left;
+                background-color: rgb(77, 99, 146);
+                padding: 8px;
+                border-radius: 3px;
+                font-size: 11px;
+                color: #fff;
+                cursor: pointer;
+
+
+                &:hover {
+                    background-color: #282bd6;
+                }
+            }
+
+            .btn-delete {
+                max-width: 45%;
+
+                float: right;
+                background-color: rgb(184, 181, 181);
+                padding: 5px;
+                border-radius: 3px;
+                font-size: 11px;
+
+                &:hover {
+                    background-color: #d62828;
+                }
+            }
+        }
+
+
+
     }
+
+    //view-table
+
+
+
 }
+
+
+//---Table///////////////////////

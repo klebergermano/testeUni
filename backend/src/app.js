@@ -8,6 +8,7 @@ import cors from 'cors';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import produtoRoutes from './routes/produtoRoutes.js';
+import UserRoutes from './routes/UserRoutes.js';
 
 
 
@@ -29,6 +30,7 @@ app.use(express.static(pathFrontend));
 
 //Routes
 app.use('/produtos', produtoRoutes);
+app.use('/users', UserRoutes);
 //app.use('/usuarios', usuarioRoutes);
 
 

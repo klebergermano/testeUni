@@ -1,30 +1,31 @@
+
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import ProdutoForm from "./ProdutoForm";
+import UserForm from "./UserForm";
 
 import { API_URL } from "../../services/api";
 
-function EditProduto() {
+function EditUser() {
 
     const { id } = useParams();
 
 
-    const [produto, setProduto] = useState(null);
+    const [user, setUser] = useState(null);
 
     useEffect(() => {
 
-        async function carregarProduto() {
+        async function carregarUser() {
 
             try {
 
                 const response = await fetch(
-                    `${API_URL}/produtos/buscar/${id}`
+                    `${API_URL}/users/buscar/${id}`
                 );
 
                 const data = await response.json();
 
-                setProduto(data);
+                setUser(data);
 
             } catch (error) {
 
@@ -32,24 +33,24 @@ function EditProduto() {
             }
         }
 
-        carregarProduto();
+        carregarUser();
 
     }, [id]);
 
     // loading
-    if (!produto) {
+    if (!user) {
         return <p>Carregando...</p>;
     }
 
     return (
 
-        <ProdutoForm
+        <UserForm
             modo="editar"
-            produto={produto}
+            user={user}
         />
 
 
     );
 }
 
-export default EditProduto;
+export default EditUser;

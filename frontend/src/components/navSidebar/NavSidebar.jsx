@@ -49,14 +49,22 @@ function NavSidebar() {
                     <p className="nav-section">
                         Usuários
                     </p>
+                    <ul className="sub-menu">
 
-                    <li>
+                        <li>
 
-                        <NavLink to="/users">
-                            Users
-                        </NavLink>
-                    </li>
+                            <NavLink to="/users/view">
+                                Listar Usuários
+                            </NavLink>
+                        </li>
 
+                        <li>
+
+                            <NavLink to="/users/add">
+                                Cadastrar Usuários
+                            </NavLink>
+                        </li>
+                    </ul>
                 </ul>
             </nav>
 

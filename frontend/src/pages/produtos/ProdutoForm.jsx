@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { API_URL } from "../../services/api";
 
-
+import "./ProdutoForm.scss";
 
 function ProdutoForm({
     produto = null,
@@ -189,10 +189,10 @@ function ProdutoForm({
 
     return (
 
-        <div className="produto-form-container">
+        <div className="form-container">
 
             <form
-                className="produto-form"
+                className="forms"
                 onSubmit={handleSubmit}
             >
 

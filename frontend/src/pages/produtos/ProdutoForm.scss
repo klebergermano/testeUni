@@ -1,7 +1,7 @@
 // AddProdutoForm.scss
 @use '../../assets/sass/variables.scss' as *;
 
-.produto-form-container {
+.form-container {
     max-width: 100%;
     display: flex;
     justify-content: center;
@@ -11,7 +11,7 @@
 
 }
 
-.produto-form {
+.forms {
     border: 5px solid $color-primary;
     width: 100%;
     max-width: 900px;
