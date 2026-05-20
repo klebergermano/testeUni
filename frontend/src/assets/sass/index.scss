@@ -14,7 +14,7 @@
 
 html,
 body {
-    background: #eeff02;
+    background: $color-secondary !important;
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -30,7 +30,7 @@ body {
 #root {
     display: flex;
     flex: 1;
-    // background-color: blue;
+    background: transparent !important;
 
     #app {
         display: flex;
@@ -103,5 +103,21 @@ footer {
     height: 80px;
     padding: 20px;
     background-color: $color-primary;
+
+}
+
+@media (max-width: 768px) {
+
+    .pages {
+
+        padding: 0px !important;
+
+
+    }
+
+    form {
+        padding: 40px !important;
+    }
+
 
 }

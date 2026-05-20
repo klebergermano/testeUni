@@ -42,16 +42,6 @@ function Header() {
                     id="bg-nav"
                 >
 
-                    <div id="bg-login-info">
-
-                        <button
-                            className="btn-logout"
-                            onClick={handleLogout}
-                        >
-                            Sair
-                        </button>
-
-                    </div>
 
                 </div>
 

@@ -1,14 +1,16 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 import { BsFillClipboardPlusFill } from "react-icons/bs";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { RiLogoutBoxLine } from "react-icons/ri";
 
 import {
     FaHome,
     FaUsers,
     FaUserPlus,
-    FaClipboardList
+    FaClipboardList,
+    FaSignOutAlt
 } from "react-icons/fa";
 
 import "./nav-sidebar.scss";
@@ -17,12 +19,28 @@ function NavSidebar() {
 
     const [menuOpen, setMenuOpen] = useState(false);
 
+    const navigate = useNavigate();
+
     const user = JSON.parse(
         localStorage.getItem("user")
     );
 
     function toggleMenu() {
         setMenuOpen(!menuOpen);
+    }
+
+    function closeMenu() {
+        setMenuOpen(false);
+    }
+
+    function handleLogout() {
+
+        localStorage.removeItem("user");
+        localStorage.removeItem("token");
+
+        closeMenu();
+
+        navigate("/login");
     }
 
     return (
@@ -67,7 +85,10 @@ function NavSidebar() {
 
                         <li>
 
-                            <NavLink to="/">
+                            <NavLink
+                                to="/"
+                                onClick={closeMenu}
+                            >
 
                                 <FaHome />
 
@@ -89,7 +110,10 @@ function NavSidebar() {
 
                                 <li>
 
-                                    <NavLink to='/produtos/view-produtos'>
+                                    <NavLink
+                                        to='/produtos/view-produtos'
+                                        onClick={closeMenu}
+                                    >
 
                                         <FaClipboardList />
 
@@ -103,7 +127,10 @@ function NavSidebar() {
 
                                 <li>
 
-                                    <NavLink to='/produtos/add-produto'>
+                                    <NavLink
+                                        to='/produtos/add-produto'
+                                        onClick={closeMenu}
+                                    >
 
                                         <BsFillClipboardPlusFill />
 
@@ -129,7 +156,10 @@ function NavSidebar() {
 
                                 <li>
 
-                                    <NavLink to="/users/view">
+                                    <NavLink
+                                        to="/users/view"
+                                        onClick={closeMenu}
+                                    >
 
                                         <FaUsers />
 
@@ -143,7 +173,10 @@ function NavSidebar() {
 
                                 <li>
 
-                                    <NavLink to="/users/add">
+                                    <NavLink
+                                        to="/users/add"
+                                        onClick={closeMenu}
+                                    >
 
                                         <FaUserPlus />
 
@@ -162,6 +195,20 @@ function NavSidebar() {
                     </ul>
 
                 </nav>
+
+                <button
+                    className="btn-logout"
+                    onClick={handleLogout}
+                >
+
+                    {/* <FaSignOutAlt /> */}
+                    <RiLogoutBoxLine />
+
+                    <span>
+                        Sair
+                    </span>
+
+                </button>
 
             </div>
 

@@ -1,5 +1,79 @@
 // nav-sidebar.scss
 
+.btn-logout {
+
+    width: 100%;
+
+    margin-top: 40px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: .9rem 1rem;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: transparent;
+
+    color: #f8c4c4;
+
+    font-size: 18px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: .2s ease;
+
+    svg {
+        min-width: 25px;
+        height: 20px;
+        //font-size: 1rem;
+    }
+
+    &:hover {
+
+        background: #991b1b63;
+
+        transform: translateX(4px);
+    }
+}
+
+/* TABLET */
+
+@media (max-width: 992px) {
+
+    .btn-logout {
+
+        justify-content: center;
+
+        padding: 1rem .5rem;
+
+        span {
+            display: none;
+        }
+    }
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+    .btn-logout {
+
+        justify-content: flex-start;
+
+        span {
+            display: inline;
+        }
+    }
+}
+
 #nav-sidebar {
 
     width: 280px;
