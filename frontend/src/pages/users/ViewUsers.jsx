@@ -101,9 +101,9 @@ function ViewUsuarios() {
                         <th>ID</th>
                         <th>Nome</th>
                         <th>Email</th>
-                        <th>Usuário</th>
+                        {/* <th>Usuário</th> */}
                         <th>Cargo</th>
-                        <th>Status</th>
+                        {/* <th>Status</th> */}
                         <th>Ações</th>
 
                     </tr>
@@ -136,15 +136,15 @@ function ViewUsuarios() {
                                     {usuario.email}
                                 </td>
 
-                                <td>
+                                {/* <td>
                                     {usuario.usuario}
-                                </td>
+                                </td> */}
 
                                 <td>
                                     {usuario.cargo}
                                 </td>
 
-                                <td className='td-status'>
+                                {/* <td className='td-status'>
 
                                     {
                                         usuario.status
@@ -152,7 +152,7 @@ function ViewUsuarios() {
                                             : 'Inativo'
                                     }
 
-                                </td>
+                                </td> */}
 
                                 <td className='td-action'>
 

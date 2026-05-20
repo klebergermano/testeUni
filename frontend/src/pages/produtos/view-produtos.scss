@@ -115,12 +115,16 @@
             .btn-edit {
                 float: left;
                 background-color: rgb(77, 99, 146);
-                padding: 8px;
+                padding: 2px 5px;
                 border-radius: 3px;
                 font-size: 11px;
                 color: #fff;
                 cursor: pointer;
 
+                svg {
+                    width: 25px;
+                    height: 25px;
+                }
 
                 &:hover {
                     background-color: #282bd6;
@@ -142,6 +146,21 @@
             }
         }
 
+
+
+    }
+
+    @media (max-width: 768px) {
+
+
+        .view-table {
+
+            // margin: 20px;
+            //display: none;
+            .btn-edit {
+                //background-color: #9b2442 !important;
+            }
+        }
 
 
     }

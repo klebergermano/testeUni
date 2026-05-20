@@ -3,6 +3,10 @@ import helpers from '../../assets/js/helpers';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './view-produtos.scss';
+import { FaEdit } from "react-icons/fa";
+
+import { BiSolidEdit } from "react-icons/bi";
+
 
 function paraValorBr(numFloat) {
     return parseFloat(numFloat).toLocaleString('pt-BR', {
@@ -162,7 +166,10 @@ function ViewProdutoa() {
                                         to={`/produtos/editar/${produto.id}`}
                                         className="btn-edit"
 
-                                    >Editar</Link>
+                                    >
+
+                                        <BiSolidEdit />
+                                    </Link>
 
                                     <button
                                         className="btn-delete"

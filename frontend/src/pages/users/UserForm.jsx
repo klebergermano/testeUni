@@ -25,6 +25,10 @@ function UserForm({
 
     });
 
+    const [imgPreview, setImgPreview] = useState(
+        "https://placehold.co/200x200?text=Avatar"
+    );
+
     // preenche formulário no modo edição
     useEffect(() => {
 
@@ -44,6 +48,11 @@ function UserForm({
 
         });
 
+        setImgPreview(
+            user.img_url ||
+            "https://placehold.co/200x200?text=Avatar"
+        );
+
     }, [user]);
 
     function handleChange(e) {
@@ -57,6 +66,16 @@ function UserForm({
             ...prev,
             [name]: value
         }));
+
+        // atualiza preview da imagem
+        if (name === "img_url") {
+
+            setImgPreview(
+                value.trim()
+                    ? value
+                    : "https://placehold.co/200x200?text=Avatar"
+            );
+        }
     }
 
     async function handleSubmit(e) {
@@ -131,15 +150,14 @@ function UserForm({
 
                 });
 
+                setImgPreview(
+                    "https://placehold.co/200x200?text=Avatar"
+                );
             }
 
         } catch (error) {
 
             console.error(error);
-            if (error.response) {
-                console.error("Resposta da API:", error.response.data);
-                console.error("Status:", error.response.status);
-            }
 
             alert(
                 isEdit
@@ -168,8 +186,54 @@ function UserForm({
 
                 </h2>
 
-                <div className="grid-2">
+                <div className="avatar-preview">
 
+                    <div className="bg-user-avatar">
+
+                        <figure className="user-avatar">
+
+                            <img
+                                src={imgPreview}
+                                alt="Preview do usuário"
+                                onError={(e) => {
+                                    e.target.src =
+                                        "https://placehold.co/200x200?text=Avatar";
+                                }}
+                            />
+
+                        </figure>
+
+                    </div>
+
+                    <span>
+                        Preview da imagem
+                    </span>
+
+                </div>
+
+                <div className="grid">
+
+                    <div className="form-group">
+
+                        <label>
+                            URL da Imagem
+                        </label>
+
+                        <input
+                            type="text"
+                            name="img_url"
+                            value={formData.img_url}
+                            onChange={handleChange}
+                            placeholder="https://..."
+                        />
+
+                    </div>
+
+
+
+                </div>
+
+                <div className="grid-2">
                     <div className="form-group">
 
                         <label>
@@ -185,6 +249,60 @@ function UserForm({
                         />
 
                     </div>
+                    <div className="form-group">
+
+                        <label>
+                            Cargo
+                        </label>
+
+                        <select
+                            name="cargo"
+                            value={formData.cargo}
+                            onChange={handleChange}
+                            required
+                        >
+
+                            <option value="">
+                                Selecione um cargo
+                            </option>
+
+                            <option value="Administrador">
+                                Administrador
+                            </option>
+
+                            <option value="Gerente">
+                                Gerente
+                            </option>
+
+                            <option value="Supervisor">
+                                Supervisor
+                            </option>
+
+                            <option value="Estoquista">
+                                Estoquista
+                            </option>
+
+                            <option value="Atendente">
+                                Atendente
+                            </option>
+
+                            <option value="Vendedor">
+                                Vendedor
+                            </option>
+
+                            <option value="Financeiro">
+                                Financeiro
+                            </option>
+
+                            <option value="Operador">
+                                Operador
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
 
                     <div className="form-group">
 
@@ -202,98 +320,29 @@ function UserForm({
 
                     </div>
 
-                </div>
 
-                <div className="grid-2">
 
                     <div className="form-group">
 
                         <label>
-                            Usuário
+
+                            {
+                                isEdit
+                                    ? "Nova Senha"
+                                    : "Senha"
+                            }
+
                         </label>
 
                         <input
-                            type="text"
-                            name="usuario"
-                            value={formData.usuario}
+                            type="password"
+                            name="senha"
+                            value={formData.senha}
                             onChange={handleChange}
-                            required
+                            required={!isEdit}
                         />
 
                     </div>
-
-                    <div className="form-group">
-
-                        <label>
-                            Cargo
-                        </label>
-
-                        <input
-                            type="text"
-                            name="cargo"
-                            value={formData.cargo}
-                            onChange={handleChange}
-                            required
-                        />
-
-                    </div>
-
-                </div>
-
-                <div className="grid-2">
-
-                    <div className="form-group">
-
-                        <label>
-                            URL da Imagem
-                        </label>
-
-                        <input
-                            type="text"
-                            name="img_url"
-                            value={formData.img_url}
-                            onChange={handleChange}
-                        />
-
-                    </div>
-
-                    <div className="form-group">
-
-                        <label>
-                            Status
-                        </label>
-
-                        <input
-                            type="text"
-                            name="status"
-                            value={formData.status}
-                            onChange={handleChange}
-                            required
-                        />
-
-                    </div>
-
-                </div>
-
-                <div className="form-group">
-
-                    <label>
-
-                        {
-                            isEdit
-                                ? "Nova Senha"
-                                : "Senha"
-                        }
-
-                    </label>
-
-                    <input
-                        type="password"
-                        name="senha"
-                        value={formData.senha}
-                        onChange={handleChange}
-                        required={!isEdit}
-                    />
 
                 </div>
 

@@ -4,7 +4,6 @@
 .form-container {
 
     width: 100%;
-
     max-width: 100%;
 
     display: flex;
@@ -12,27 +11,22 @@
 
     padding: 40px 20px;
 
-    //  background: #d9f82b;
-
-    min-height: 100vh;
-
     box-sizing: border-box;
 }
 
 .forms {
-
-    border: 5px solid $color-primary;
 
     width: 100%;
     max-width: 900px;
 
     background: #ffffff;
 
+    border: 4px solid $color-primary;
+    border-radius: 16px;
+
     padding: 35px;
 
-    border-radius: 14px;
-
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
 
     box-sizing: border-box;
 
@@ -43,24 +37,100 @@
         color: $color-primary;
 
         font-size: 28px;
+        font-weight: 800;
 
         text-transform: uppercase;
 
-        font-weight: bolder;
-
-        border-bottom: 1px solid #cacaca;
+        border-bottom: 1px solid #e5e5e5;
 
         padding-bottom: 20px;
     }
 
+    // =========================
+    // PREVIEW AVATAR
+    // =========================
+
+    .avatar-preview {
+
+        width: 100%;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        gap: 12px;
+
+        margin-bottom: 30px;
+
+        .bg-user-avatar {
+
+            width: 160px;
+            height: 160px;
+
+            padding: 4px;
+
+            border-radius: 50%;
+
+            background: linear-gradient(135deg,
+                    $color-primary,
+                    #444);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+
+            figure.user-avatar {
+
+                width: 100%;
+                height: 100%;
+
+                margin: 0;
+
+                overflow: hidden;
+
+                border-radius: 50%;
+
+                background: #f3f4f6;
+
+                border: 3px solid #fff;
+
+                img {
+
+                    width: 100%;
+                    height: 100%;
+
+                    object-fit: cover;
+
+                    display: block;
+                }
+            }
+        }
+
+        span {
+
+            color: #666;
+
+            font-size: 14px;
+
+            font-weight: 600;
+        }
+    }
+
+    // =========================
+    // FORM GROUP
+    // =========================
+
     .form-group {
+
+        width: 100%;
 
         display: flex;
         flex-direction: column;
 
         margin-bottom: 20px;
-
-        width: 100%;
 
         label {
 
@@ -72,33 +142,40 @@
         }
     }
 
+    // =========================
+    // INPUTS
+    // =========================
+
     input,
     textarea,
     select {
 
         width: 100%;
 
-        box-sizing: border-box;
-
         padding: 12px 14px;
 
         border: 1px solid #dcdcdc;
-
-        border-radius: 5px;
-
-        font-size: 15px;
-
-        transition: 0.2s;
+        border-radius: 8px;
 
         background: #fff;
 
+        font-size: 15px;
+
+        box-sizing: border-box;
+
+        transition:
+            border-color 0.2s ease,
+            box-shadow 0.2s ease;
+
+        outline: none;
         border-color: $color-primary;
 
         &:focus {
 
-            border-color: #3b82f6;
+            border-color: $color-primary;
 
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+            box-shadow:
+                0 0 0 4px rgba(59, 130, 246, 0.12);
         }
     }
 
@@ -106,16 +183,18 @@
 
         resize: vertical;
 
-        min-height: 120px;
-
         height: 100%;
     }
+
+    // =========================
+    // GRID
+    // =========================
 
     .grid-2 {
 
         display: grid;
 
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(2, 1fr);
 
         gap: 20px;
     }
@@ -124,58 +203,65 @@
 
         display: flex;
 
-        gap: 10px;
+        gap: 15px;
 
         margin-bottom: 20px;
 
-        width: 100%;
-
-        flex-wrap: wrap;
-    }
-
-    .form-group-2 {
-
-        display: flex;
-
-        flex-direction: column;
-
-        align-items: center;
-
         justify-content: center;
+        align-items: end;
 
-        flex: 1 1 150px;
+        // =========================
+        // MINI CARDS
+        // =========================
 
-        padding: 10px;
+        .form-group-2 {
 
-        border: 2px solid rgb(223, 223, 223);
+            // flex: 1 1 180px;
 
-        overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            //padding: 14px;
+            min-width: 80px;
+            border: 2px solid #ececec;
+            border-radius: 10px;
 
-        border-radius: 8px;
+            background: #fafafa;
 
-        label {
+            transition: 0.2s;
+            // height: 200px !important;
 
-            width: 100%;
+            &:hover {
 
-            padding: 0 !important;
+                border-color: $color-primary;
+            }
 
-            margin-bottom: 5px;
+            label {
+
+                margin-bottom: 8px;
+
+                font-weight: 600;
+
+                color: #444;
+            }
+
+            input {
+
+                text-align: center;
+            }
         }
 
-        input {
 
-            margin: 0 !important;
-
-            max-width: 100%;
-
-            text-align: center;
-        }
     }
+
+
+    // =========================
+    // CHECKBOX
+    // =========================
 
     .checkbox-group {
 
         display: flex;
-
         align-items: center;
 
         gap: 10px;
@@ -186,6 +272,8 @@
 
         label {
 
+            margin: 0;
+
             font-weight: 600;
 
             color: #444;
@@ -194,44 +282,65 @@
         input {
 
             width: 18px;
-
             height: 18px;
         }
     }
 
-    button {
+    // =========================
+    // BUTTON
+    // =========================
 
+    button {
+        display: block;
+        margin: 0 auto;
+        max-width: 400px;
+        margin-top: 60px;
         width: 100%;
 
-        padding: 14px;
+        padding: 20px 10px;
 
         border: none;
-
-        border-radius: 8px;
+        border-radius: 10px;
 
         background: $color-primary;
 
-        color: white;
+        color: #fff;
 
         font-size: 16px;
-
-        font-weight: bold;
+        font-weight: 700;
 
         cursor: pointer;
 
-        transition: 0.2s;
+        transition:
+            transform 0.2s ease,
+            opacity 0.2s ease;
+
+        &:hover {
+
+            opacity: 0.95;
+
+            transform: translateY(-2px);
+        }
     }
 }
 
+// =========================
+// PREÇOS
+// =========================
+
 .preco-custo {
-    color: red;
+    color: #dc2626;
+    font-weight: 700;
 }
 
 .preco-venda {
-    color: rgb(4, 109, 0);
+    color: #15803d;
+    font-weight: 700;
 }
 
-/* TABLET */
+// =========================
+// TABLET
+// =========================
 
 @media (max-width: 992px) {
 
@@ -240,16 +349,20 @@
         padding: 25px;
 
         h2 {
+
             font-size: 24px;
         }
 
         .grid-2 {
+
             grid-template-columns: 1fr;
         }
     }
 }
 
-/* MOBILE */
+// =========================
+// MOBILE
+// =========================
 
 @media (max-width: 768px) {
 
@@ -275,9 +388,23 @@
             padding-bottom: 15px;
         }
 
+        .avatar-preview {
+
+            .bg-user-avatar {
+
+                width: 130px;
+                height: 130px;
+            }
+        }
+
         .grid-3 {
 
-            flex-direction: column;
+            //flex-direction: column;
+            gap: 5px;
+
+            label {
+                font-size: 11px;
+            }
         }
 
         .form-group-2 {
@@ -303,7 +430,9 @@
     }
 }
 
-/* CELULARES PEQUENOS */
+// =========================
+// SMALL DEVICES
+// =========================
 
 @media (max-width: 480px) {
 
@@ -312,6 +441,7 @@
         padding: 15px;
 
         h2 {
+
             font-size: 18px;
         }
 

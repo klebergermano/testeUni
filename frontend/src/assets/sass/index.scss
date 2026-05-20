@@ -111,8 +111,15 @@ footer {
     .pages {
 
         padding: 0px !important;
+        //  padding: 140PX !important;
+        background-color: #282bd6 !important;
+        max-width: 100% !important;
 
-
+        .view-table {
+            //display: none;
+            max-width: 100% !important;
+            font-size: 12px !important;
+        }
     }
 
     form {
