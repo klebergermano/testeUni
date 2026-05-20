@@ -3,7 +3,7 @@ import './assets/sass/index.scss'
 
 
 
-import Home from './pages/Home'
+import Home from './pages/home/Home.jsx'
 import Dashboard from './pages/Dashboard.jsx'
 
 

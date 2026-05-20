@@ -7,8 +7,8 @@ import { API_URL } from "../../services/api";
 
 export default function Login() {
 
-    const [email, setEmail] = useState("");
-    const [senha, setSenha] = useState("");
+    const [email, setEmail] = useState("fulano@email.com");
+    const [senha, setSenha] = useState("12345");
     const [loading, setLoading] = useState(false);
     const [erro, setErro] = useState("");
 

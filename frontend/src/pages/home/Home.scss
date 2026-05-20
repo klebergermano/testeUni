@@ -1,3 +1,5 @@
+@use '../../assets/sass/variables.scss' as *;
+
 #home-dashboard {
 
     padding: 2rem;
@@ -58,6 +60,38 @@
             }
         }
     }
+}
+
+.ultimos-produtos {
+
+    h2 {
+        padding: 20px;
+    }
+
+    table {
+        background: #111827;
+        color: #fff;
+        border-radius: 10px;
+        overflow: hidden;
+        border: 0px solid #666;
+
+
+        th,
+        td {
+            padding: 5px
+        }
+
+
+        th {
+            background-color: rgb(42, 37, 56);
+            padding: 10px 10px;
+        }
+
+        ;
+    }
+
+    ;
+
 }
 
 @media (max-width: 768px) {
