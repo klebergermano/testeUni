@@ -150,10 +150,31 @@
 
     }
 
-    @media (max-width: 768px) {
 
+    //view-table
+
+
+
+}
+
+
+@media (max-width: 700px) {
+
+    .bg-table {
+        // background-color: #d62828 !important;
+        padding: 10px;
 
         .view-table {
+            min-width: none !important;
+            max-width: 100% !important;
+
+            td,
+            th,
+            tr {
+                min-width: none !important;
+                font-size: 12px !important;
+
+            }
 
             // margin: 20px;
             //display: none;
@@ -165,11 +186,93 @@
 
     }
 
-    //view-table
 
+}
+
+@media (max-width: 570px) {
+
+    .bg-table {
+
+
+        .view-table {
+
+
+            td,
+            th,
+            tr {}
+
+            .td-action {
+                width: 80px !important;
+                //     float: none !important;
+                //  background-color: #096e00;
+                display: flex;
+                justify-content: space-between;
+
+
+            }
+
+
+            // margin: 20px;
+            //display: none;
+            .btn-edit {
+                // background-color: #9b2442 !important;
+                margin: 0px;
+            }
+        }
+
+
+    }
 
 
 }
 
+@media (max-width: 500px) {
+
+    .bg-table {
+        box-sizing: border-box;
+        //background-color: #5c7aff !important;
+        padding: 0px;
+        // border: 5px solid green;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        //margin: 0 auto;
+
+
+        .view-table {
+            box-sizing: border-box;
+
+            margin: 0 auto;
+            min-width: none !important;
+            max-width: 100% !important;
+
+            td,
+            th,
+            tr {
+                min-width: none !important;
+                font-size: 11px !important;
+                padding: 3px;
+
+            }
+
+            .td-action {
+                float: none !important;
+                //  background-color: #096e00;
+            }
+
+
+            // margin: 20px;
+            //display: none;
+            .btn-edit {
+                //background-color: #9b2442 !important;
+            }
+        }
+
+
+    }
+
+
+}
 
 //---Table///////////////////////
