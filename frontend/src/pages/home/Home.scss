@@ -4,10 +4,14 @@
 
     padding: 2rem;
     width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    box-sizing: border-box;
 
     h1 {
         margin-bottom: 2rem;
         color: #fff;
+        word-break: break-word;
     }
 
     .cards {
@@ -23,17 +27,20 @@
             background: #111827;
             padding: 1.5rem;
             border-radius: 12px;
+            min-width: 0;
 
             h2 {
                 color: #9ca3af;
                 font-size: 1rem;
                 margin-bottom: 1rem;
+                word-break: break-word;
             }
 
             span {
                 color: #fff;
                 font-size: 2rem;
                 font-weight: bold;
+                word-break: break-word;
             }
         }
     }
@@ -41,7 +48,7 @@
     .graficos {
 
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 1.5rem;
 
         .grafico-box {
@@ -49,10 +56,13 @@
             background: #111827;
             padding: 1.5rem;
             border-radius: 12px;
+            min-width: 0;
+            overflow: hidden;
 
             h2 {
                 color: #fff;
                 margin-bottom: 1rem;
+                word-break: break-word;
             }
 
             &.full {
@@ -64,39 +74,42 @@
 
 .ultimos-produtos {
 
+    width: 100%;
+    overflow-x: auto;
+    min-width: 420px;
+
     h2 {
         margin-top: 20px;
         padding: 20px;
         text-align: center;
         text-transform: uppercase;
         font-weight: bolder;
-
+        color: #fff;
     }
 
     table {
+
+        width: 100%;
+        min-width: 500px;
+
         background: #111827;
         color: #fff;
         border-radius: 10px;
         overflow: hidden;
         border: 0px solid #666;
-
+        border-collapse: collapse;
 
         th,
         td {
-            padding: 5px
+            padding: 10px 8px;
+            text-align: left;
+            word-break: break-word;
         }
-
 
         th {
             background-color: rgb(42, 37, 56);
-            padding: 10px 10px;
         }
-
-        ;
     }
-
-    ;
-
 }
 
 @media (max-width: 768px) {
@@ -105,9 +118,77 @@
 
         padding: 1rem;
 
+        .cards {
+            //grid-template-columns: 1fr;
+        }
+
+        .graficos {
+            grid-template-columns: 1fr;
+        }
+    }
+}
+
+@media (max-width: 500px) {
+
+    #home-dashboard {
+
+        padding: 10px;
+
+        h1 {
+            font-size: 1.4rem;
+            text-align: center;
+        }
+
+        .cards {
+            display: flex;
+            justify-content: center;
+            background-color: aqua;
+            gap: 5px;
+
+            .card {
+
+                margin: 0 auto;
+                padding: 1rem;
+                min-width: 80px;
+
+                h2 {
+                    font-size: 0.9rem;
+                }
+
+                span {
+                    font-size: 1.2rem;
+                }
+            }
+        }
+
         .graficos {
 
-            grid-template-columns: 1fr;
+            gap: 1rem;
+
+            .grafico-box {
+                min-width: 350px;
+
+                padding: 1rem;
+
+                h2 {
+                    font-size: 1rem;
+                    text-align: center;
+                }
+            }
+        }
+    }
+
+    .ultimos-produtos {
+
+        table {
+
+            min-width: 350px;
+
+            th,
+            td {
+                font-size: 0.85rem;
+                padding: 8px 6px;
+            }
         }
     }
 }
