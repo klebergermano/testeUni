@@ -256,6 +256,16 @@
 
             }
 
+            .th-desc,
+            .td-desc {
+                display: none;
+
+                textarea {
+                    display: none;
+
+                }
+            }
+
             .td-action {
                 float: none !important;
                 //  background-color: #096e00;

@@ -116,7 +116,7 @@ function ViewProdutoa() {
 
                         <th>Volume ML</th>
                         <th>Preço R$</th>
-                        <th>Descrição</th>
+                        <th className='th-desc'>Descrição</th>
                         <th>Ações</th>
                     </tr>
 
