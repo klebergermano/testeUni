@@ -96,9 +96,18 @@ const ProdutoController = {
 
             console.error(error);
 
+            // ER_DUP_ENTRY = registro duplicado
+            if (error.code === "ER_DUP_ENTRY") {
+
+                return res.status(400).json({
+                    success: false,
+                    message: "Erro, Esse código de barras já está sendo usado por outro produto."
+                });
+            }
+
             res.status(500).json({
                 success: false,
-                error: 'Erro ao cadastrar produto'
+                message: 'Erro ao cadastrar produto'
             });
         }
 
@@ -258,15 +267,24 @@ const ProdutoController = {
                 message: 'Produto atualizado com sucesso'
             });
 
-        } catch (error) {
+        }
+        catch (error) {
 
             console.error(error);
 
+            // ER_DUP_ENTRY = registro duplicado
+            if (error.code === "ER_DUP_ENTRY") {
+
+                return res.status(400).json({
+                    success: false,
+                    message: "Erro, Esse código de barras já está sendo usado por outro produto."
+                });
+            }
+
             res.status(500).json({
                 success: false,
-                message: 'Erro interno do servidor'
+                message: 'Erro ao cadastrar produto'
             });
-
         }
 
     }

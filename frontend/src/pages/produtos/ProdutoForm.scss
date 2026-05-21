@@ -468,3 +468,52 @@
         }
     }
 }
+
+@media (max-width: 440px) {
+
+    .forms {
+
+        padding: 25px;
+
+        h2 {
+
+            font-size: 18px;
+        }
+
+        .grid-3 {
+            // display: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            //flex-wrap: wrap;
+            flex-direction: row;
+            // background-color: #15803d;
+
+            .form-group {
+                max-width: 80px !important;
+                min-width: none !important;
+
+                margin-bottom: 15px;
+            }
+
+        }
+
+
+
+        label {
+
+            font-size: 14px;
+        }
+
+        input,
+        textarea,
+        select {
+
+            font-size: 13px;
+        }
+
+        button {
+
+            font-size: 14px;
+        }
+    }
+}

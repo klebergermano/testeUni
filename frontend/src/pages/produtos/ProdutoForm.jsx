@@ -31,6 +31,58 @@ function ProdutoForm({
         );
     }
 
+    function limparEspacos(valor) {
+
+        if (typeof valor !== "string") {
+            return valor;
+        }
+
+        const texto = valor.trim();
+
+        return texto === ""
+            ? null
+            : texto;
+    }
+
+    function tratarPayload(data) {
+
+        return {
+
+            ...data,
+
+            nome: limparEspacos(data.nome),
+            descricao: limparEspacos(data.descricao),
+            marca: limparEspacos(data.marca),
+            codigo_barras: limparEspacos(data.codigo_barras),
+            imagem: limparEspacos(data.imagem),
+
+            volume_ml:
+                data.volume_ml === ""
+                    ? null
+                    : Number(data.volume_ml),
+
+            teor_alcoolico:
+                data.teor_alcoolico === ""
+                    ? null
+                    : Number(data.teor_alcoolico),
+
+            quantidade_estoque:
+                data.quantidade_estoque === ""
+                    ? null
+                    : Number(data.quantidade_estoque),
+
+            preco_custo:
+                moedaBRParaFloat(
+                    data.preco_custo
+                ),
+
+            preco_venda:
+                moedaBRParaFloat(
+                    data.preco_venda
+                )
+        };
+    }
+
     const [formData, setFormData] = useState({
 
         nome: "",
@@ -120,20 +172,7 @@ function ProdutoForm({
 
         e.preventDefault();
 
-        const payload = {
-
-            ...formData,
-
-            preco_custo:
-                moedaBRParaFloat(
-                    formData.preco_custo
-                ),
-
-            preco_venda:
-                moedaBRParaFloat(
-                    formData.preco_venda
-                )
-        };
+        const payload = tratarPayload(formData);
 
         try {
 
@@ -163,6 +202,20 @@ function ProdutoForm({
 
             if (!response.ok) {
 
+                // código de barras duplicado
+                if (
+                    data.message?.toLowerCase()
+                        .includes("codigo_barras")
+                    ||
+                    data.message?.toLowerCase()
+                        .includes("duplicate")
+                ) {
+
+                    throw new Error(
+                        "O código de barras já está cadastrado."
+                    );
+                }
+
                 throw new Error(
                     data.message ||
                     "Erro ao salvar produto"
@@ -180,9 +233,12 @@ function ProdutoForm({
             console.error(error);
 
             alert(
-                isEdit
-                    ? "Erro ao atualizar produto"
-                    : "Erro ao cadastrar produto"
+                error.message ||
+                (
+                    isEdit
+                        ? "Erro ao atualizar produto"
+                        : "Erro ao cadastrar produto"
+                )
             );
         }
     }
@@ -367,21 +423,6 @@ function ProdutoForm({
                             type="text"
                             name="codigo_barras"
                             value={formData.codigo_barras}
-                            onChange={handleChange}
-                        />
-
-                    </div>
-
-                    <div className="form-group">
-
-                        <label>
-                            Imagem (URL)
-                        </label>
-
-                        <input
-                            type="text"
-                            name="imagem"
-                            value={formData.imagem}
                             onChange={handleChange}
                         />
 
