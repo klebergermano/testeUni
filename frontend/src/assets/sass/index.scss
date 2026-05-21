@@ -56,15 +56,18 @@ body {
                 background-color: #ffffff;
                 min-height: 100%;
                 box-shadow: 0px 0px 10px #333;
+                box-sizing: border-box !important;
+
             }
 
         }
 
         .pages {
+            box-sizing: border-box !important;
             flex: 1;
             width: 100%;
             background-color: #eef5ff;
-            margin: 0 auto;
+            //  margin: 0 auto;
             padding: 40px;
 
             // border: 2px solid yellow;
@@ -115,11 +118,36 @@ footer {
 
         max-width: 100% !important;
 
-        .view-table {
-            //display: none;
-            max-width: 100% !important;
-            font-size: 12px !important;
-        }
+        //display: flex;
+        // .view-table {
+        //     //display: none;
+        //     max-width: 100% !important;
+        //     font-size: 12px !important;
+        // }
+
+    }
+
+    form {
+        padding: 40px !important;
+    }
+
+
+}
+
+@media (max-width: 400px) {
+
+    .pages {
+
+
+        max-width: 390px !important;
+        //  padding-right: 10PX !important;
+
+        //display: flex;
+        // .view-table {
+        //     //display: none;
+        //     max-width: 100% !important;
+        //     font-size: 12px !important;
+        // }
 
     }
 

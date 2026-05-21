@@ -237,7 +237,7 @@ function Home() {
                     </ResponsiveContainer>
                 </div>
 
-                <div className="grafico-box full">
+                <div className="grafico-box ">
                     <h2>Maiores Estoques</h2>
 
                     <ResponsiveContainer width="100%" height={300}>

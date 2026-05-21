@@ -76,7 +76,7 @@
 
     width: 100%;
     overflow-x: auto;
-    min-width: 420px;
+    //min-width: 420px;
 
     h2 {
         margin-top: 20px;
@@ -90,7 +90,7 @@
     table {
 
         width: 100%;
-        min-width: 500px;
+        //min-width: 500px;
 
         background: #111827;
         color: #fff;
@@ -114,25 +114,43 @@
 
 @media (max-width: 768px) {
 
+
     #home-dashboard {
+        margin: 0px;
 
         padding: 1rem;
+        // max-width: 90%;
 
         .cards {
             //grid-template-columns: 1fr;
         }
 
         .graficos {
-            grid-template-columns: 1fr;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+
+            .grafico-box {
+                width: 100%;
+            }
+
         }
     }
 }
 
 @media (max-width: 500px) {
+    .pages {
+        // padding: 0px !important;
+        background-color: aquamarine !important;
+        // margin-right: -3% !important;
+
+    }
 
     #home-dashboard {
-
-        padding: 10px;
+        //20px solid red;
+        padding: 20px;
 
         h1 {
             font-size: 1.4rem;
@@ -140,16 +158,20 @@
         }
 
         .cards {
-            display: flex;
-            justify-content: center;
+
+            // display: none !important;
+            // flex-direction: column;
+            // justify-content: center;
             background-color: aqua;
             gap: 5px;
+            min-width: 50px;
+            flex-wrap: wrap;
 
             .card {
 
                 margin: 0 auto;
                 padding: 1rem;
-                min-width: 80px;
+                min-width: 50px;
 
                 h2 {
                     font-size: 0.9rem;
@@ -179,16 +201,77 @@
     }
 
     .ultimos-produtos {
+        margin-top: 40px;
+        //display: flex;
+        //display: none;
 
-        table {
 
-            min-width: 350px;
+        //background-color: red;
+        h2 {
+            color: #111827;
+        }
 
-            th,
-            td {
-                font-size: 0.85rem;
-                padding: 8px 6px;
+        display: flex;
+
+        .grafico-box {
+            // display: none;
+            //border: 5px solid blue;
+            overflow: hidden;
+            //padding: 20px;
+
+            table {
+                position: relative;
+                display: block;
+                // max-width: 50% !important;
+                min-width: none !important;
+
+
+                th,
+                td {
+                    font-size: 0.85rem;
+                    padding: 8px 6px;
+                }
             }
         }
+
+
+    }
+}
+
+@media (max-width: 400px) {
+    .pages {
+        // padding: 0px !important;
+        // background-color: aquamarine !important;
+
+    }
+
+    #home-dashboard {
+        //border: 20px solid red;
+        // padding: 0px;
+        // margin-right: -3% !important;
+
+        h1 {
+            font-size: 1.4rem;
+            text-align: center;
+        }
+
+        // .ultimos-produtos {
+        //     border: 10px solid orange;
+        //     display: flex !important;
+        //     max-width: 300px !important;
+        //     min-width: none !important;
+        //     overflow: hidden;
+        //     padding: 20px;
+        //     flex-direction: column;
+
+        //     * {
+        //         min-width: none !important;
+        //     }
+
+        //     .grafico-box {
+        //         display: flex;
+        //         flex-direction: column;
+        //     }
+        // }
     }
 }
