@@ -88,7 +88,7 @@ export default function Login() {
                 onSubmit={handleSubmit}
             >
 
-                <h2>Acessar:</h2>
+                <h2>Área Administrativa</h2>
 
                 {
                     erro && (
@@ -124,13 +124,7 @@ export default function Login() {
 
                 </div>
 
-                <div>
 
-                    <a href="#" className="forget">
-                        Esqueceu a senha?
-                    </a>
-
-                </div>
 
                 <div>
 
