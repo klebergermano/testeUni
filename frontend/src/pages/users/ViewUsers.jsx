@@ -1,7 +1,7 @@
 import { API_URL } from '../../services/api';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-
+import { BiSolidEdit } from "react-icons/bi";
 import './ViewUsers.scss';
 
 function ViewUsuarios() {
@@ -160,7 +160,7 @@ function ViewUsuarios() {
                                         to={`/users/edit/${usuario.id}`}
                                         className="btn-edit"
                                     >
-                                        Editar
+                                        <BiSolidEdit />
                                     </Link>
 
                                     <button
