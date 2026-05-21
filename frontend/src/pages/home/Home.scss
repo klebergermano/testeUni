@@ -123,6 +123,8 @@
 
         .cards {
             //grid-template-columns: 1fr;
+            text-align: center;
+
         }
 
         .graficos {
@@ -141,12 +143,7 @@
 }
 
 @media (max-width: 500px) {
-    .pages {
-        // padding: 0px !important;
-        background-color: aquamarine !important;
-        // margin-right: -3% !important;
 
-    }
 
     #home-dashboard {
         //20px solid red;
@@ -162,14 +159,14 @@
             // display: none !important;
             // flex-direction: column;
             // justify-content: center;
-            background-color: aqua;
+            // background-color: aqua;
             gap: 5px;
             min-width: 50px;
-            flex-wrap: wrap;
+            //  flex-wrap: wrap;
 
             .card {
-
-                margin: 0 auto;
+                text-align: center;
+                //    margin: 0 auto;
                 padding: 1rem;
                 min-width: 50px;
 
